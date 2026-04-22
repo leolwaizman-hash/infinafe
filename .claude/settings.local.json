@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(npx --prefix /Users/leowaizman/Documents/groot next build)",
+      "Bash(bash -c \"npm run build\")",
+      "Read(//Users/leowaizman/Documents/**)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s -X POST http://localhost:3000/api/analyze -H 'Content-Type: application/json' -d '{:*)",
+      "Bash(python3 -m json.tool)",
+      "Bash(git -C ~/Documents/groot log --oneline -3)",
+      "Bash(git -C ~/Documents/groot remote -v)",
+      "Bash(git -C ~/Documents/groot remote set-url origin https://github.com/leolwaizman-hash/infinafe.git)",
+      "Bash(git -C ~/Documents/groot push -u origin main)",
+      "Bash(brew install *)",
+      "Bash(sudo chown *)",
+      "Bash(ssh-keygen -t ed25519 -C \"leowaizman@icloud.com\" -f ~/.ssh/github_infinafe -N \"\")",
+      "Read(//Users/leowaizman/.ssh/**)",
+      "Bash(cat)",
+      "Bash(ssh -T git@github.com)"
+    ]
+  }
+}
