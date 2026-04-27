@@ -8,12 +8,12 @@ const caveat = Caveat({ variable: "--font-caveat", subsets: ["latin"], weight: [
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://infinafe.com"),
-  title: { default: "Infinafe — AI Agent Security for Small Business", template: "%s | Infinafe" },
-  description: "Infinafe protects the AI agents running your business from prompt injections, data leaks, and hijacks. Built for small businesses, not Fortune 500 security teams.",
+  title: { default: "Infina — AI Agent Security for Small Business", template: "%s | Infina" },
+  description: "Infina protects the AI agents running your business from prompt injections, data leaks, and hijacks. Built for small businesses, not Fortune 500 security teams.",
   openGraph: {
-    type: "website", siteName: "Infinafe",
-    title: "Infinafe — AI Agent Security for Small Business",
-    description: "Infinafe protects the AI agents running your business from prompt injections, data leaks, and hijacks.",
+    type: "website", siteName: "Infina",
+    title: "Infina — AI Agent Security for Small Business",
+    description: "Infina protects the AI agents running your business from prompt injections, data leaks, and hijacks.",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {

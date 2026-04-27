@@ -9,7 +9,7 @@ const steps = [
   {
     num: "02",
     title: "Monitor",
-    desc: "Every action your AI agents take is analyzed by Infinafe in real-time — before anything can go wrong.",
+    desc: "Every action your AI agents take is analyzed by Infina in real-time — before anything can go wrong.",
   },
   {
     num: "03",

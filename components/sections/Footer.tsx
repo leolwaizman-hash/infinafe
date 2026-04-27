@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -16,9 +17,7 @@ export default function Footer() {
         alignItems: "center",
         gap: "24px",
       }}>
-        <span style={{ fontWeight: 700, fontSize: "17px", color: "#1D1D1F", letterSpacing: "-0.3px" }}>
-          Infinafe
-        </span>
+        <Image src="/logo.svg" alt="Infina" width={80} height={24} />
         <nav style={{ display: "flex", gap: "32px" }}>
           {[
             { label: "Privacy", href: "#" },

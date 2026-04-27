@@ -50,7 +50,7 @@ export default async function Dashboard() {
           <div className="w-7 h-7 rounded-md bg-brand-green flex items-center justify-center">
             <span className="text-bg font-bold text-sm">IF</span>
           </div>
-          <span className="font-semibold text-lg">Infinafe</span>
+          <span className="font-semibold text-lg">Infina</span>
           <span className="text-muted text-sm">/ Dashboard</span>
         </div>
         <div className="flex items-center gap-2 text-xs text-brand-green">
@@ -117,7 +117,7 @@ export default async function Dashboard() {
         <div className="mt-8 bg-surface border border-border rounded-xl p-6">
           <h3 className="font-semibold text-sm mb-3">Connect your agents</h3>
           <p className="text-text-2 text-xs mb-4">
-            Send any agent action to this webhook and Infinafe will analyze it instantly:
+            Send any agent action to this webhook and Infina will analyze it instantly:
           </p>
           <pre className="bg-bg border border-border rounded-lg p-4 text-xs text-brand-green overflow-x-auto">{`POST https://your-domain.com/api/analyze
 

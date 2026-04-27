@@ -16,7 +16,7 @@ export async function POST(req: Request) {
           price_data: {
             currency: "usd",
             product_data: {
-              name: "Infinafe Pro",
+              name: "Infina Pro",
               description: "AI Agent Security — protects your automations from prompt injection, data leaks, and hijacks",
             },
             unit_amount: 4900, // $49.00
@@ -25,8 +25,8 @@ export async function POST(req: Request) {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL || "https://infinafe.vercel.app"}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL || "https://infinafe.vercel.app"}/#pricing`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL || "https://infina.vercel.app"}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL || "https://infina.vercel.app"}/#pricing`,
     });
 
     return NextResponse.json({ url: session.url });

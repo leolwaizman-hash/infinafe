@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import HandwritingCanvas from "@/components/ui/HandwritingCanvas";
 
@@ -29,9 +30,7 @@ export default function Hero() {
         borderBottom: "1px solid #f0f0f0",
         zIndex: 100,
       }}>
-        <span style={{ fontWeight: 700, fontSize: "17px", letterSpacing: "-0.3px", color: "#1D1D1F" }}>
-          Infinafe
-        </span>
+        <Image src="/logo.svg" alt="Infina" width={90} height={28} style={{ color: "#1D1D1F" }} />
         <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
           <Link href="#how-it-works" style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>How it works</Link>
           <Link href="#pricing" style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>Pricing</Link>
@@ -50,7 +49,7 @@ export default function Hero() {
 
         {/* Handwriting animation */}
         <HandwritingCanvas
-          text="Infinafe Technology"
+          text="Infina Technology"
           onComplete={() => setTimeout(() => setDone(true), 150)}
         />
 
@@ -72,6 +71,7 @@ export default function Hero() {
               }}>
                 AI security for the automations running your business.
                 Protect your Zapier, Make, and n8n agents from prompt injections and data leaks.
+
               </p>
 
               <div style={{ marginTop: "44px", display: "flex", flexWrap: "wrap", gap: "14px" }}>
