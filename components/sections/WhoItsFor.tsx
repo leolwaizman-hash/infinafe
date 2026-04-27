@@ -1,43 +1,50 @@
-import SectionWrapper from "@/components/ui/SectionWrapper";
 import FadeInView from "@/components/ui/FadeInView";
 
-const audiences = [
-  { icon: "🏢", title: "Small agencies running automations for clients", description: "You've built Zapier or Make workflows for dozens of clients. One compromised agent could expose all of them." },
-  { icon: "🛍️", title: "E-commerce brands using AI for customer service", description: "Your AI handles refunds, complaints, and order lookups. It knows your pricing, your policies, and your customers." },
-  { icon: "🚀", title: "SaaS startups with AI-powered workflows", description: "Your product runs on automation. The AI that's powering your growth is also your biggest unguarded surface." },
-  { icon: "⚡", title: "Any small business using Zapier, Make, Lindy, or n8n", description: "If your business runs on AI agents — even simple ones — you need to know when something is trying to abuse them." },
+const profiles = [
+  { emoji: "⚡", title: "Automation builders", desc: "Running complex Zapier or Make workflows that touch customer data." },
+  { emoji: "🤖", title: "AI-first businesses", desc: "Using n8n, Lindy, or custom agents for sales, support, or operations." },
+  { emoji: "🏪", title: "Small business owners", desc: "Who rely on AI tools but don't have an IT or security team." },
+  { emoji: "🛡️", title: "Compliance-conscious teams", desc: "Who need a paper trail of what their AI agents are doing." },
 ];
 
 export default function WhoItsFor() {
   return (
-    <SectionWrapper id="who" className="border-t border-border">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        <div className="lg:sticky lg:top-24">
-          <FadeInView>
-            <p className="text-xs font-semibold tracking-widest text-brand-green uppercase mb-4">Who It&apos;s For</p>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Built for real businesses.</h2>
-            <p className="text-text-2 leading-relaxed mb-8">You don&apos;t need a dedicated security team or a PhD in cybersecurity. You just need to know your AI agents are safe.</p>
-            <div className="flex flex-wrap gap-2">
-              {["Zapier","Make","n8n","Lindy"].map(t => (
-                <span key={t} className="border border-border-2 text-text-2 text-xs px-3 py-1.5 rounded-full">{t}</span>
-              ))}
-            </div>
-          </FadeInView>
-        </div>
-        <div className="flex flex-col gap-4">
-          {audiences.map((item, i) => (
-            <FadeInView key={item.title} delay={i * 0.1} direction="left">
-              <div className="flex gap-4 p-5 rounded-xl border border-border bg-surface hover:border-brand-green/30 hover:bg-surface-2 transition-all duration-200 group">
-                <div className="text-2xl mt-0.5 shrink-0">{item.icon}</div>
-                <div>
-                  <h3 className="text-sm font-semibold text-text mb-1 group-hover:text-brand-green transition-colors">{item.title}</h3>
-                  <p className="text-xs text-text-2 leading-relaxed">{item.description}</p>
-                </div>
+    <section id="who" style={{
+      padding: "120px 6vw",
+      borderTop: "1px solid #F0F0F0",
+      backgroundColor: "#FFFFFF",
+    }}>
+      <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+        <FadeInView>
+          <p style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.08em", color: "#86868B", textTransform: "uppercase", marginBottom: "16px" }}>
+            Who It&apos;s For
+          </p>
+          <h2 style={{ fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 700, color: "#1D1D1F", lineHeight: 1.1, letterSpacing: "-0.5px", maxWidth: "520px" }}>
+            Built for small teams moving fast.
+          </h2>
+        </FadeInView>
+
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "40px 32px",
+          marginTop: "72px",
+        }}>
+          {profiles.map((p, i) => (
+            <FadeInView key={p.title} delay={i * 0.1}>
+              <div style={{ padding: "8px 0" }}>
+                <span style={{ fontSize: "32px" }}>{p.emoji}</span>
+                <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#1D1D1F", marginTop: "20px", marginBottom: "10px" }}>
+                  {p.title}
+                </h3>
+                <p style={{ fontSize: "15px", color: "#6E6E73", lineHeight: 1.6 }}>
+                  {p.desc}
+                </p>
               </div>
             </FadeInView>
           ))}
         </div>
       </div>
-    </SectionWrapper>
+    </section>
   );
 }

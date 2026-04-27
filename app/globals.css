@@ -1,44 +1,46 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-brand-green: #00FF87;
+  --color-brand-green: #00C46A;
   --color-brand-red:   #FF3B3B;
-  --color-bg:          #0A0A0A;
-  --color-surface:     #111111;
-  --color-surface-2:   #161616;
-  --color-border:      #1F1F1F;
-  --color-border-2:    #2A2A2A;
-  --color-muted:       #6B7280;
-  --color-text:        #F5F5F5;
-  --color-text-2:      #A1A1AA;
+  --color-bg:          #FFFFFF;
+  --color-surface:     #F5F5F7;
+  --color-surface-2:   #E8E8ED;
+  --color-border:      #D2D2D7;
+  --color-border-2:    #C7C7CC;
+  --color-muted:       #86868B;
+  --color-text:        #1D1D1F;
+  --color-text-2:      #6E6E73;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-handwriting: var(--font-caveat);
 }
 
-:root { color-scheme: dark; }
+:root { color-scheme: light; }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #0A0A0A;
-  color: #F5F5F5;
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background-color: #FFFFFF;
+  color: #1D1D1F;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-@keyframes gridMove {
-  0%   { background-position: 0 0; }
-  100% { background-position: 64px 64px; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.animated-grid {
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size: 64px 64px;
-  animation: gridMove 20s linear infinite;
+.fade-up {
+  animation: fadeUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-.glow-green { box-shadow: 0 0 20px rgba(0,255,135,0.3), 0 0 40px rgba(0,255,135,0.1); }
-.glow-red   { box-shadow: 0 0 20px rgba(255,59,59,0.3),  0 0 40px rgba(255,59,59,0.1); }
-.text-glow-green { text-shadow: 0 0 20px rgba(0,255,135,0.5); }
+.pen-cursor {
+  position: absolute;
+  pointer-events: none;
+  font-size: 28px;
+  transform: rotate(35deg) translate(-4px, -20px);
+  transition: left 0.065s linear, top 0.065s linear;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+}

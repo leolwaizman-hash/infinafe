@@ -1,43 +1,124 @@
 "use client";
-import { motion } from "motion/react";
-import AnimatedGridBg from "@/components/ui/AnimatedGridBg";
+import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
+import HandwritingCanvas from "@/components/ui/HandwritingCanvas";
 
 export default function Hero() {
+  const [done, setDone] = useState(false);
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-16">
-      <AnimatedGridBg />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-10 blur-[120px] pointer-events-none" style={{ background: "#00FF87" }} />
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 border border-brand-green/20 bg-brand-green/5 rounded-full px-4 py-1.5 text-xs font-medium text-brand-green mb-8">
-          <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
-          Now accepting early access applications
-        </motion.div>
-        <motion.h1 initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-          Your AI agents are <span className="text-brand-red">vulnerable.</span><br />
-          We keep them safe — <span className="text-brand-green text-glow-green">in plain English.</span>
-        </motion.h1>
-        <motion.p initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base sm:text-lg text-text-2 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Infinafe protects the AI agents running your business from prompt injections, data leaks, and hijacks. Built for small businesses, not Fortune 500 security teams.
-        </motion.p>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="#waitlist" className="bg-brand-green text-bg font-bold text-base px-8 py-3.5 rounded-lg hover:brightness-110 glow-green transition-all duration-200">
-            Join the Waitlist
+    <section style={{
+      minHeight: "100vh",
+      backgroundColor: "#fff",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      padding: "0 6vw",
+      position: "relative",
+    }}>
+
+      {/* Nav */}
+      <nav style={{
+        position: "fixed", top: 0, left: 0, right: 0,
+        padding: "18px 6vw",
+        display: "flex", justifyContent: "space-between", alignItems: "center",
+        backgroundColor: "rgba(255,255,255,0.85)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderBottom: "1px solid #f0f0f0",
+        zIndex: 100,
+      }}>
+        <span style={{ fontWeight: 700, fontSize: "17px", letterSpacing: "-0.3px", color: "#1D1D1F" }}>
+          Infinafe
+        </span>
+        <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+          <Link href="#how-it-works" style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>How it works</Link>
+          <Link href="#pricing" style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>Pricing</Link>
+          <Link href="#pricing" style={{
+            background: "#1D1D1F", color: "#fff",
+            padding: "9px 22px", borderRadius: "100px",
+            fontSize: "14px", fontWeight: 600, textDecoration: "none",
+          }}>
+            Get started
           </Link>
-          <Link href="#how-it-works" className="border border-border-2 text-text-2 hover:border-brand-green/50 hover:text-text text-base px-8 py-3.5 rounded-lg transition-all duration-200">
-            See how it works ↓
-          </Link>
-        </motion.div>
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-8 text-xs text-muted">
-          No credit card. No enterprise contracts. Just security that makes sense.
-        </motion.p>
+        </div>
+      </nav>
+
+      {/* Main content */}
+      <div style={{ maxWidth: "860px", paddingTop: "80px" }}>
+
+        {/* Handwriting animation */}
+        <HandwritingCanvas
+          text="Infinafe Technology"
+          onComplete={() => setTimeout(() => setDone(true), 150)}
+        />
+
+        {/* Content that appears after writing */}
+        <AnimatePresence>
+          {done && (
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <p style={{
+                fontSize: "clamp(18px, 2.2vw, 26px)",
+                color: "#6E6E73",
+                marginTop: "20px",
+                maxWidth: "560px",
+                lineHeight: 1.55,
+                fontWeight: 400,
+              }}>
+                AI security for the automations running your business.
+                Protect your Zapier, Make, and n8n agents from prompt injections and data leaks.
+              </p>
+
+              <div style={{ marginTop: "44px", display: "flex", flexWrap: "wrap", gap: "14px" }}>
+                <Link href="#pricing" style={{
+                  background: "#1D1D1F", color: "#fff",
+                  padding: "16px 38px", borderRadius: "100px",
+                  fontSize: "17px", fontWeight: 600, textDecoration: "none",
+                  display: "inline-flex", alignItems: "center", gap: "8px",
+                }}>
+                  Start protecting →
+                </Link>
+                <Link href="#how-it-works" style={{
+                  border: "1.5px solid #D2D2D7", color: "#1D1D1F",
+                  padding: "16px 38px", borderRadius: "100px",
+                  fontSize: "17px", fontWeight: 600, textDecoration: "none",
+                  display: "inline-flex", alignItems: "center",
+                }}>
+                  How it works
+                </Link>
+              </div>
+
+              <p style={{ marginTop: "28px", fontSize: "13px", color: "#86868B" }}>
+                No credit card. No enterprise contracts. Just security that makes sense.
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent pointer-events-none" />
+
+      {/* Scroll indicator */}
+      {done && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+          style={{
+            position: "absolute", bottom: "40px", left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex", flexDirection: "column", alignItems: "center", gap: "8px",
+          }}
+        >
+          <span style={{ fontSize: "12px", color: "#86868B", letterSpacing: "0.05em" }}>SCROLL</span>
+          <div style={{
+            width: "1px", height: "40px", background: "linear-gradient(to bottom, #86868B, transparent)"
+          }} />
+        </motion.div>
+      )}
     </section>
   );
 }

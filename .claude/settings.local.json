@@ -18,7 +18,10 @@
       "Bash(ssh-keygen -t ed25519 -C \"leowaizman@icloud.com\" -f ~/.ssh/github_infinafe -N \"\")",
       "Read(//Users/leowaizman/.ssh/**)",
       "Bash(cat)",
-      "Bash(ssh -T git@github.com)"
+      "Bash(ssh -T git@github.com)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }
