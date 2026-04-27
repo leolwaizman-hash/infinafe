@@ -1,10 +1,10 @@
 import FadeInView from "@/components/ui/FadeInView";
 
 const profiles = [
-  { emoji: "⚡", title: "Automation builders", desc: "Running complex Zapier or Make workflows that touch customer data." },
-  { emoji: "🤖", title: "AI-first businesses", desc: "Using n8n, Lindy, or custom agents for sales, support, or operations." },
-  { emoji: "🏪", title: "Small business owners", desc: "Who rely on AI tools but don't have an IT or security team." },
-  { emoji: "🛡️", title: "Compliance-conscious teams", desc: "Who need a paper trail of what their AI agents are doing." },
+  { num: "01", title: "Automation builders", desc: "Running complex Zapier or Make workflows that touch customer data." },
+  { num: "02", title: "AI-first businesses", desc: "Using n8n, Lindy, or custom agents for sales, support, or operations." },
+  { num: "03", title: "Small business owners", desc: "Who rely on AI tools but don't have an IT or security team." },
+  { num: "04", title: "Compliance-conscious teams", desc: "Who need a paper trail of what their AI agents are doing." },
 ];
 
 export default function WhoItsFor() {
@@ -33,8 +33,10 @@ export default function WhoItsFor() {
           {profiles.map((p, i) => (
             <FadeInView key={p.title} delay={i * 0.1}>
               <div style={{ padding: "8px 0" }}>
-                <span style={{ fontSize: "32px" }}>{p.emoji}</span>
-                <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#1D1D1F", marginTop: "20px", marginBottom: "10px" }}>
+                <p style={{ fontSize: "13px", fontWeight: 700, color: "#86868B", letterSpacing: "0.08em", marginBottom: "20px" }}>
+                  {p.num}
+                </p>
+                <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#1D1D1F", marginBottom: "10px" }}>
                   {p.title}
                 </h3>
                 <p style={{ fontSize: "15px", color: "#6E6E73", lineHeight: 1.6 }}>
