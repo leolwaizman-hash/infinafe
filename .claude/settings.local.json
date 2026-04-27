@@ -24,7 +24,11 @@
       "Bash(git push *)",
       "Bash(git rm *)",
       "Bash(git reset *)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(ssh -T git@github.com -o ConnectTimeout=15)",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)",
+      "Bash(npx tsx *)"
     ]
   }
 }

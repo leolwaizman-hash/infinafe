@@ -1,9 +1,16 @@
 "use client";
-import SectionWrapper from "@/components/ui/SectionWrapper";
 import FadeInView from "@/components/ui/FadeInView";
 import { useState } from "react";
 
-const features = ["Real-time agent monitoring","Plain English threat alerts","Email notifications","Weekly security digest","Covers Zapier, Make, n8n & Lindy","No per-seat pricing","Cancel anytime"];
+const features = [
+  "Real-time agent monitoring",
+  "Plain English threat alerts",
+  "Email notifications",
+  "Weekly security digest",
+  "Covers Zapier, Make, n8n & Lindy",
+  "No per-seat pricing",
+  "Cancel anytime",
+];
 
 export default function Pricing() {
   const [email, setEmail] = useState("");
@@ -28,48 +35,114 @@ export default function Pricing() {
   }
 
   return (
-    <SectionWrapper id="pricing" className="border-t border-border">
-      <div className="text-center mb-14">
+    <section id="pricing" style={{
+      padding: "120px 6vw",
+      backgroundColor: "#050505",
+      borderTop: "1px solid rgba(255,255,255,0.06)",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+
+      {/* Background glow */}
+      <div style={{
+        position: "absolute", top: "50%", left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "800px", height: "500px",
+        background: "radial-gradient(ellipse, rgba(0,255,135,0.06) 0%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
+
+      <div style={{ maxWidth: "1100px", margin: "0 auto", position: "relative" }}>
         <FadeInView>
-          <p className="text-xs font-semibold tracking-widest text-brand-green uppercase mb-4">Pricing</p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Simple pricing. No enterprise contracts.</h2>
-          <p className="text-text-2 max-w-md mx-auto">One plan. Everything included. Start protecting your AI agents today.</p>
+          <p style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.1em", color: "#00FF87", textTransform: "uppercase", marginBottom: "20px", textAlign: "center" }}>
+            Pricing
+          </p>
+          <h2 style={{
+            fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 700,
+            color: "#F5F5F5", lineHeight: 1.05, letterSpacing: "-1.5px",
+            textAlign: "center",
+          }}>
+            Simple pricing.
+            <span style={{ color: "rgba(255,255,255,0.3)" }}> No surprises.</span>
+          </h2>
+          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.4)", marginTop: "20px", textAlign: "center", maxWidth: "480px", margin: "20px auto 0" }}>
+            One plan. Everything included. Start protecting today.
+          </p>
         </FadeInView>
-      </div>
-      <FadeInView>
-        <div className="max-w-md mx-auto rounded-2xl border border-brand-green/30 bg-surface p-8 relative overflow-hidden">
-          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-40 rounded-full opacity-15 blur-[60px] pointer-events-none" style={{ background: "#00FF87" }} />
-          <div className="relative">
-            <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-5xl font-bold">$49</span>
-              <span className="text-[#6B7280] text-sm">/month</span>
+
+        <FadeInView delay={0.15}>
+          <div style={{
+            maxWidth: "520px", margin: "64px auto 0",
+            background: "linear-gradient(135deg, #0D0D0D 0%, #111111 100%)",
+            border: "1px solid rgba(0,255,135,0.2)",
+            borderRadius: "20px",
+            padding: "52px",
+            position: "relative",
+            overflow: "hidden",
+            boxShadow: "0 0 60px rgba(0,255,135,0.08), 0 0 120px rgba(0,255,135,0.04)",
+          }}>
+
+            {/* Top glow accent */}
+            <div style={{
+              position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
+              width: "60%", height: "1px",
+              background: "linear-gradient(90deg, transparent, rgba(0,255,135,0.6), transparent)",
+            }} />
+
+            <div style={{ display: "flex", alignItems: "baseline", gap: "6px", marginBottom: "6px" }}>
+              <span style={{ fontSize: "72px", fontWeight: 800, color: "#F5F5F5", letterSpacing: "-3px", lineHeight: 1 }}>$49</span>
+              <span style={{ fontSize: "16px", color: "rgba(255,255,255,0.35)", fontWeight: 500 }}>/month</span>
             </div>
-            <p className="text-[#6B7280] text-sm mb-6">Early access pricing — locked in for life.</p>
-            <ul className="space-y-3 mb-8">
+            <p style={{ fontSize: "14px", color: "#00FF87", marginBottom: "36px", fontWeight: 500 }}>
+              Early access — price locked forever.
+            </p>
+
+            <ul style={{ listStyle: "none", padding: 0, margin: "0 0 36px 0", display: "flex", flexDirection: "column", gap: "14px" }}>
               {features.map(f => (
-                <li key={f} className="flex items-center gap-3 text-sm text-[#6B7280]">
-                  <span className="text-brand-green text-xs shrink-0">✓</span>{f}
+                <li key={f} style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "15px", color: "rgba(255,255,255,0.6)" }}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8l3.5 3.5L13 4.5" stroke="#00FF87" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  {f}
                 </li>
               ))}
             </ul>
+
             <input
               type="email"
               placeholder="your@email.com"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg px-4 py-3 text-sm text-[#F5F5F5] placeholder:text-[#6B7280] focus:outline-none focus:border-[#00FF87]/50 mb-3"
+              onKeyDown={e => e.key === "Enter" && handleCheckout()}
+              style={{
+                width: "100%", boxSizing: "border-box",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "10px", padding: "14px 18px",
+                fontSize: "15px", color: "#F5F5F5",
+                outline: "none", marginBottom: "12px",
+              }}
             />
             <button
               onClick={handleCheckout}
               disabled={loading}
-              className="block w-full text-center bg-[#00FF87] text-black font-semibold text-sm px-6 py-3 rounded-lg hover:brightness-110 transition-all duration-200 disabled:opacity-60"
+              style={{
+                width: "100%", background: "#00FF87", color: "#000",
+                border: "none", borderRadius: "10px", padding: "16px",
+                fontSize: "16px", fontWeight: 700, cursor: "pointer",
+                boxShadow: "0 0 40px rgba(0,255,135,0.3)",
+                opacity: loading ? 0.7 : 1,
+                transition: "opacity 0.2s",
+              }}
             >
-              {loading ? "Redirecting..." : "Start Protecting My Agents →"}
+              {loading ? "Redirecting..." : "Start protecting my agents →"}
             </button>
-            <p className="text-center text-xs text-[#6B7280] mt-4">Powered by Stripe · Cancel anytime</p>
+            <p style={{ textAlign: "center", fontSize: "13px", color: "rgba(255,255,255,0.25)", marginTop: "16px" }}>
+              Secured by Stripe · Cancel anytime
+            </p>
           </div>
-        </div>
-      </FadeInView>
-    </SectionWrapper>
+        </FadeInView>
+      </div>
+    </section>
   );
 }

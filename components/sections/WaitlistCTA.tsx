@@ -10,23 +10,36 @@ export default function WaitlistCTA() {
   return (
     <section id="waitlist" style={{
       padding: "120px 6vw",
-      backgroundColor: "#1D1D1F",
-      borderTop: "1px solid #F0F0F0",
+      backgroundColor: "#000",
+      borderTop: "1px solid rgba(255,255,255,0.06)",
+      position: "relative",
+      overflow: "hidden",
     }}>
-      <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
+
+      <div style={{
+        position: "absolute", bottom: "-20%", left: "50%", transform: "translateX(-50%)",
+        width: "800px", height: "400px",
+        background: "radial-gradient(ellipse, rgba(0,255,135,0.07) 0%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
+
+      <div style={{ maxWidth: "600px", margin: "0 auto", textAlign: "center", position: "relative" }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
-          <p style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.08em", color: "#86868B", textTransform: "uppercase", marginBottom: "16px" }}>
+          <p style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.1em", color: "#00FF87", textTransform: "uppercase", marginBottom: "20px" }}>
             Early Access
           </p>
-          <h2 style={{ fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 700, color: "#FFFFFF", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: "16px" }}>
+          <h2 style={{
+            fontSize: "clamp(36px, 4.5vw, 60px)", fontWeight: 700,
+            color: "#F5F5F5", lineHeight: 1.05, letterSpacing: "-1.5px", marginBottom: "20px",
+          }}>
             Be first in line.
           </h2>
-          <p style={{ fontSize: "17px", color: "#86868B", marginBottom: "48px", lineHeight: 1.5 }}>
+          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.4)", marginBottom: "52px", lineHeight: 1.6 }}>
             Join 100+ businesses already on the waitlist.
           </p>
 
@@ -38,24 +51,27 @@ export default function WaitlistCTA() {
             >
               <div style={{
                 width: "64px", height: "64px", borderRadius: "50%",
-                backgroundColor: "rgba(0,196,106,0.1)", border: "1px solid rgba(0,196,106,0.3)",
+                backgroundColor: "rgba(0,255,135,0.1)", border: "1px solid rgba(0,255,135,0.3)",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: "24px", color: "#00C46A"
-              }}>✓</div>
-              <p style={{ fontSize: "20px", fontWeight: 600, color: "#FFFFFF" }}>{state.message}</p>
-              <p style={{ fontSize: "14px", color: "#86868B" }}>We&apos;ll be in touch before launch.</p>
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 13l4 4L19 7" stroke="#00FF87" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <p style={{ fontSize: "20px", fontWeight: 600, color: "#F5F5F5" }}>{state.message}</p>
+              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.35)" }}>We&apos;ll be in touch before launch.</p>
             </motion.div>
           ) : (
             <form action={action} style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "420px", margin: "0 auto" }}>
               <input
                 type="email" name="email" placeholder="you@company.com" required
                 style={{
-                  backgroundColor: "rgba(255,255,255,0.07)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  borderRadius: "12px",
+                  backgroundColor: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: "10px",
                   padding: "16px 20px",
                   fontSize: "15px",
-                  color: "#FFFFFF",
+                  color: "#F5F5F5",
                   outline: "none",
                   width: "100%",
                   boxSizing: "border-box",
@@ -64,15 +80,16 @@ export default function WaitlistCTA() {
               <button
                 type="submit" disabled={isPending}
                 style={{
-                  backgroundColor: "#FFFFFF", color: "#1D1D1F",
-                  border: "none", borderRadius: "12px",
-                  padding: "16px", fontSize: "15px", fontWeight: 600,
+                  backgroundColor: "#00FF87", color: "#000",
+                  border: "none", borderRadius: "10px",
+                  padding: "16px", fontSize: "16px", fontWeight: 700,
                   cursor: isPending ? "not-allowed" : "pointer",
                   opacity: isPending ? 0.6 : 1,
                   width: "100%",
+                  boxShadow: "0 0 40px rgba(0,255,135,0.25)",
                 }}
               >
-                {isPending ? "Joining..." : "Join Waitlist →"}
+                {isPending ? "Joining..." : "Join the waitlist →"}
               </button>
             </form>
           )}
@@ -81,7 +98,7 @@ export default function WaitlistCTA() {
             <p style={{ marginTop: "12px", fontSize: "14px", color: "#FF3B3B" }}>{state.message}</p>
           )}
           {state.status !== "success" && (
-            <p style={{ marginTop: "20px", fontSize: "13px", color: "#6E6E73" }}>No spam, ever. Unsubscribe any time.</p>
+            <p style={{ marginTop: "20px", fontSize: "13px", color: "rgba(255,255,255,0.25)" }}>No spam, ever.</p>
           )}
         </motion.div>
       </div>

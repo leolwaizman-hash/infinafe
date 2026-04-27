@@ -2,27 +2,28 @@
 
 @theme inline {
   --color-brand-green: #00C46A;
+  --color-brand-glow:  #00FF87;
   --color-brand-red:   #FF3B3B;
-  --color-bg:          #FFFFFF;
-  --color-surface:     #F5F5F7;
-  --color-surface-2:   #E8E8ED;
-  --color-border:      #D2D2D7;
-  --color-border-2:    #C7C7CC;
-  --color-muted:       #86868B;
-  --color-text:        #1D1D1F;
-  --color-text-2:      #6E6E73;
+  --color-bg:          #000000;
+  --color-surface:     #0D0D0D;
+  --color-surface-2:   #141414;
+  --color-border:      #1F1F1F;
+  --color-border-2:    #2A2A2A;
+  --color-muted:       #6B7280;
+  --color-text:        #F5F5F5;
+  --color-text-2:      #9CA3AF;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-handwriting: var(--font-caveat);
 }
 
-:root { color-scheme: light; }
+:root { color-scheme: dark; }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #FFFFFF;
-  color: #1D1D1F;
+  background-color: #000000;
+  color: #F5F5F5;
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -30,6 +31,21 @@ body {
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 .fade-up {
@@ -42,5 +58,26 @@ body {
   font-size: 28px;
   transform: rotate(35deg) translate(-4px, -20px);
   transition: left 0.065s linear, top 0.065s linear;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #F5F5F5 0%, #9CA3AF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.green-gradient-text {
+  background: linear-gradient(135deg, #00FF87 0%, #00C46A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-green {
+  box-shadow: 0 0 40px rgba(0, 255, 135, 0.15), 0 0 80px rgba(0, 255, 135, 0.05);
+}
+
+.border-glow {
+  border: 1px solid rgba(0, 255, 135, 0.2);
 }
