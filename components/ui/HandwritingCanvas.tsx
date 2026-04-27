@@ -84,7 +84,7 @@ export default function HandwritingCanvas({ text, onComplete }: Props) {
           style={{ left: penPos.x, top: penPos.y }}
           aria-hidden
         >
-          ✒️
+          |
         </span>
       )}
     </div>

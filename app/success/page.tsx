@@ -33,7 +33,7 @@ function SuccessContent() {
         </div>
 
         <h1 className="text-4xl font-bold mb-4">
-          You&apos;re protected. 🛡️
+          You&apos;re protected.
         </h1>
         <p className="text-[#6B7280] text-lg mb-10">
           Welcome to Infina. Your AI agents are now monitored 24/7.
@@ -52,7 +52,7 @@ function SuccessContent() {
             </button>
           </div>
           <p className="text-xs text-[#6B7280] mt-3">
-            ⚠️ Save this key — you&apos;ll need it to connect your automations.
+            Save this key — you&apos;ll need it to connect your automations.
           </p>
         </div>
 
