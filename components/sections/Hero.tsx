@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import HandwritingCanvas from "@/components/ui/HandwritingCanvas";
 
@@ -30,7 +29,24 @@ export default function Hero() {
         borderBottom: "1px solid #f0f0f0",
         zIndex: 100,
       }}>
-        <Image src="/logo.svg" alt="Infina" width={90} height={28} style={{ color: "#1D1D1F" }} />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130" fill="none" width="90" height="28" aria-label="Infina">
+          <line x1="8"  y1="8"  x2="8"  y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="24" y1="8"  x2="24" y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="48" y1="8"  x2="48"  y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="48" y1="8"  x2="84"  y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="84" y1="8"  x2="84"  y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="108" y1="8"   x2="108" y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="108" y1="8"   x2="155" y2="8"   stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="108" y1="65"  x2="150" y2="65"  stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="172" y1="8"  x2="172" y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="188" y1="8"  x2="188" y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="212" y1="8"  x2="212" y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="212" y1="8"  x2="248" y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="248" y1="8"  x2="248" y2="122" stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="272" y1="122" x2="304" y2="8"   stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="336" y1="122" x2="304" y2="8"   stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+          <line x1="281" y1="78"  x2="327" y2="78"  stroke="#1D1D1F" strokeWidth="3.5" strokeLinecap="square"/>
+        </svg>
         <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
           <Link href="#how-it-works" style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>How it works</Link>
           <Link href="#pricing" style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>Pricing</Link>
