@@ -1,22 +1,27 @@
 "use client";
 import { motion } from "motion/react";
 
-interface FadeInViewProps {
+interface Props {
   children: React.ReactNode;
   delay?: number;
+  duration?: number;
+  y?: number;
+  scale?: boolean;
+  style?: React.CSSProperties;
   className?: string;
-  direction?: "up" | "left" | "right" | "none";
 }
 
-export default function FadeInView({ children, delay = 0, className, direction = "up" }: FadeInViewProps) {
-  const d = { up: { y: 24, x: 0 }, left: { y: 0, x: -24 }, right: { y: 0, x: 24 }, none: { y: 0, x: 0 } };
-  const { x, y } = d[direction];
+export default function FadeInView({
+  children, delay = 0, duration = 0.8,
+  y = 32, scale = false, style, className,
+}: Props) {
   return (
     <motion.div
-      initial={{ opacity: 0, y, x }}
-      whileInView={{ opacity: 1, y: 0, x: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      initial={{ opacity: 0, y, scale: scale ? 0.95 : 1 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      style={style}
       className={className}
     >
       {children}
