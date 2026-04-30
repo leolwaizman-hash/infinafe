@@ -66,7 +66,7 @@ function SuccessContent() {
             </li>
             <li className="flex gap-3">
               <span className="text-[#00FF87] font-bold">2.</span>
-              POST to: <code className="text-[#F5F5F5] bg-[#0A0A0A] px-2 py-0.5 rounded">https://infina.vercel.app/api/analyze</code>
+              POST to: <code className="text-[#F5F5F5] bg-[#0A0A0A] px-2 py-0.5 rounded">https://infinafe.vercel.app/api/analyze</code>
             </li>
             <li className="flex gap-3">
               <span className="text-[#00FF87] font-bold">3.</span>

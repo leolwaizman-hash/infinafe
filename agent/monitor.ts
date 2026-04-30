@@ -30,7 +30,7 @@ const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://infina.vercel.app";
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://infinafe.vercel.app";
 
 // ── Tool definitions ─────────────────────────────────────────────────────────
 
