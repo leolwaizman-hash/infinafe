@@ -170,15 +170,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Dashboard — full width below text */}
-        <motion.div
-          initial={{ opacity: 0, y: 56, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.0, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          style={{ width: "100%", maxWidth: "860px", padding: "28px 6vw 0", margin: "0 auto" }}
-        >
-          <Dashboard />
-        </motion.div>
 
       </motion.div>
 
