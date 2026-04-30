@@ -28,7 +28,9 @@
       "Bash(ssh -T git@github.com -o ConnectTimeout=15)",
       "Skill(claude-api)",
       "Skill(claude-api:*)",
-      "Bash(npx tsx *)"
+      "Bash(npx tsx *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://infina.vercel.app/)",
+      "Bash(curl -s -I https://infina.vercel.app/)"
     ]
   }
 }
