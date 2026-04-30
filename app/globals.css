@@ -103,6 +103,17 @@ h1, h2, h3 {
   border: 1px solid rgba(0, 255, 135, 0.2);
 }
 
+/* Mobile responsive two-column grids */
+@media (max-width: 768px) {
+  .grid-2col {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+  .hide-mobile { display: none !important; }
+  .hero-h1 { font-size: clamp(48px, 12vw, 80px) !important; }
+  .section-pad { padding: 80px 5vw !important; }
+}
+
 /* Animated hero grid */
 @keyframes gridShift {
   0% { background-position: 0 0; }

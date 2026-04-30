@@ -80,7 +80,7 @@ export default function HowItWorks() {
         <motion.div
           style={{ position: "sticky", top: 0, height: "100vh", display: "flex", alignItems: "center", opacity: headerOpacity }}
         >
-          <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", padding: "0 6vw", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+          <div className="grid-2col" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", padding: "0 6vw", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
 
             {/* Left: step indicator */}
             <div style={{ position: "relative" }}>

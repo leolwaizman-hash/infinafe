@@ -7,20 +7,25 @@ const syne = Syne({ variable: "--font-display", subsets: ["latin"], weight: ["70
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://infinafe.com"),
+  metadataBase: new URL("https://infinafe.vercel.app"),
   title: { default: "Infina — AI Agent Security for Small Business", template: "%s | Infina" },
-  description: "Infina protects the AI agents running your business from prompt injections, data leaks, and hijacks. Built for small businesses, not Fortune 500 security teams.",
+  description: "Infina protects your Zapier, Make, n8n, and Lindy AI agents from prompt injections, data leaks, and hijacks. Real-time threat detection. Plain English alerts. $49/month.",
+  keywords: ["AI agent security", "prompt injection protection", "Zapier security", "Make automation security", "n8n security", "small business cybersecurity", "AI automation protection"],
+  authors: [{ name: "Leo Waizman", url: "https://infinafe.vercel.app" }],
   openGraph: {
     type: "website", siteName: "Infina",
+    url: "https://infinafe.vercel.app",
     title: "Infina — AI Agent Security for Small Business",
-    description: "Infina protects the AI agents running your business from prompt injections, data leaks, and hijacks.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    description: "Protect your AI agents from prompt injections, data leaks, and hijacks. Built for Zapier, Make, n8n, and Lindy. $49/month.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Infina — AI Agent Security" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Infinafe — AI Agent Security for Small Business",
+    title: "Infina — AI Agent Security for Small Business",
+    description: "Protect your AI agents from prompt injections, data leaks, and hijacks.",
     images: ["/og-image.png"],
   },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

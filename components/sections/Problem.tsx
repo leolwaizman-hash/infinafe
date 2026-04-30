@@ -17,7 +17,7 @@ export default function Problem() {
       <div style={{ position: "absolute", top: "40%", right: "-15%", width: "700px", height: "700px", background: "radial-gradient(circle, rgba(251,113,133,0.04) 0%, transparent 65%)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "100px", alignItems: "start" }}>
+        <div className="grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "100px", alignItems: "start" }}>
 
           {/* Left: big statement */}
           <div>

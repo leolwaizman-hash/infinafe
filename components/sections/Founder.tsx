@@ -27,7 +27,7 @@ export default function Founder() {
           The Founder
         </motion.p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "100px", alignItems: "start" }}>
+        <div className="grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "100px", alignItems: "start" }}>
 
           {/* Left: stats only */}
           <motion.div
