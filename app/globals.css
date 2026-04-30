@@ -24,9 +24,13 @@ html { scroll-behavior: smooth; }
 body {
   background-color: #09090B;
   color: #F8FAFC;
-  font-family: var(--font-geist-sans), "DM Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: var(--font-sans), "DM Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: "ss01", "cv01";
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display), "Syne", system-ui, sans-serif;
+  font-feature-settings: "ss01";
 }
 
 @keyframes pulse-dot {
