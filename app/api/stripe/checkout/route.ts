@@ -25,8 +25,8 @@ export async function POST(req: Request) {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL || "https://infina.vercel.app"}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL || "https://infina.vercel.app"}/#pricing`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL || "https://infinafe.vercel.app"}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL || "https://infinafe.vercel.app"}/#pricing`,
     });
 
     return NextResponse.json({ url: session.url });
