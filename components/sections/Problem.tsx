@@ -6,7 +6,7 @@ import WordReveal from "@/components/ui/WordReveal";
 const stats = [
   { prefix: "", target: 340, suffix: "%", label: "Rise in AI prompt injection attacks in 2024", color: "#FB7185" },
   { prefix: "$", target: 4.8, suffix: "M", decimals: 1, label: "Average cost of a data breach for small businesses", color: "#FB923C" },
-  { prefix: "", target: 0, suffix: "", label: "Security tools built for small business AI — until now", color: "#4ADE80" },
+  { prefix: "", target: 0, suffix: "", label: "Security tools existed for small business AI — until Infina.", color: "#4ADE80" },
 ];
 
 export default function Problem() {

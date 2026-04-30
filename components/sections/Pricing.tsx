@@ -1,5 +1,7 @@
 "use client";
 import FadeInView from "@/components/ui/FadeInView";
+import WordReveal from "@/components/ui/WordReveal";
+import { motion } from "motion/react";
 import { useState } from "react";
 
 const features = [
@@ -56,13 +58,16 @@ export default function Pricing() {
             <p style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.28)", textTransform: "uppercase", marginBottom: "20px" }}>
               Pricing
             </p>
-            <h2 style={{
-              fontSize: "clamp(36px, 3.8vw, 58px)", fontWeight: 800,
-              color: "#F8FAFC", lineHeight: 1.03, letterSpacing: "-0.04em", marginBottom: "24px",
-            }}>
-              Simple pricing.
+            <h2 style={{ fontSize: "clamp(36px, 3.8vw, 58px)", fontWeight: 800, color: "#F8FAFC", lineHeight: 1.03, letterSpacing: "-0.04em", marginBottom: "24px" }}>
+              <WordReveal text="Simple pricing." delay={0.1} />
               <br />
-              <span style={{ color: "rgba(255,255,255,0.22)" }}>No surprises.</span>
+              <motion.span
+                initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                style={{ display: "inline-block", color: "rgba(255,255,255,0.22)" }}
+              >No surprises.</motion.span>
             </h2>
             <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.42)", lineHeight: 1.7, marginBottom: "48px" }}>
               One plan. Everything included.
@@ -91,16 +96,20 @@ export default function Pricing() {
 
           {/* Right: pricing card */}
           <FadeInView delay={0.15}>
+            <div style={{ position: "relative" }}>
+              {/* Outer glow */}
+              <div style={{ position: "absolute", inset: "-1px", borderRadius: "17px", background: "linear-gradient(135deg, rgba(74,222,128,0.15) 0%, transparent 50%, rgba(74,222,128,0.08) 100%)", zIndex: 0 }} />
             <div style={{
               background: "linear-gradient(160deg, #1C1C26 0%, #14141C 100%)",
-              border: "1px solid rgba(255,255,255,0.08)",
+              border: "1px solid rgba(74,222,128,0.15)",
               borderRadius: "16px",
               padding: "44px",
               position: "relative",
               overflow: "hidden",
-              boxShadow: "0 40px 80px rgba(0,0,0,0.4)",
+              boxShadow: "0 40px 80px rgba(0,0,0,0.5), 0 0 60px rgba(74,222,128,0.04)",
+              zIndex: 1,
             }}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)" }} />
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(74,222,128,0.3), transparent)" }} />
 
               <div style={{ display: "flex", alignItems: "baseline", gap: "6px", marginBottom: "4px" }}>
                 <span style={{ fontSize: "64px", fontWeight: 800, color: "#F8FAFC", letterSpacing: "-0.04em", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>$49</span>
@@ -149,6 +158,7 @@ export default function Pricing() {
               <p style={{ textAlign: "center", fontSize: "12px", color: "rgba(255,255,255,0.2)", marginTop: "14px" }}>
                 Secured by Stripe · Cancel anytime
               </p>
+            </div>
             </div>
           </FadeInView>
         </div>

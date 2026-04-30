@@ -102,6 +102,7 @@ export default function Features() {
               key={f.title}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: (i % 3) * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
