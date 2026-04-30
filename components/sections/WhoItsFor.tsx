@@ -20,7 +20,7 @@ export default function WhoItsFor() {
           <WordReveal text="Built for small teams moving fast." delay={0.1} />
         </h2>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)", borderRadius: "12px", overflow: "hidden" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "linear-gradient(135deg, rgba(74,222,128,0.08), rgba(255,255,255,0.04))", borderRadius: "12px", overflow: "hidden" }}>
           {profiles.map((p, i) => (
             <motion.div
               key={p.title}

@@ -86,7 +86,7 @@ export default function Testimonials() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: (i % 3) * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <div style={{ padding: "40px", background: "#141418", height: "100%", boxSizing: "border-box" }}>
+              <div className="shine-card" style={{ padding: "40px", background: "#141418", height: "100%", boxSizing: "border-box" }}>
                 <Stars />
                 <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: "28px", fontStyle: "italic" }}>
                   &ldquo;{t.quote}&rdquo;

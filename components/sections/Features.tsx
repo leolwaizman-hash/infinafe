@@ -106,7 +106,7 @@ export default function Features() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: (i % 3) * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <div style={{ padding: "44px 40px", background: "#141418", height: "100%", boxSizing: "border-box", position: "relative", overflow: "hidden" }}>
+              <div className="shine-card" style={{ padding: "44px 40px", background: "#141418", height: "100%", boxSizing: "border-box", position: "relative", overflow: "hidden" }}>
                 <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: `linear-gradient(90deg, ${f.color}40, transparent)` }} />
                 <div style={{ width: "44px", height: "44px", borderRadius: "10px", background: `rgba(${f.color === "#FB7185" ? "251,113,133" : f.color === "#4ADE80" ? "74,222,128" : f.color === "#60A5FA" ? "96,165,250" : f.color === "#A78BFA" ? "167,139,250" : f.color === "#FBBF24" ? "251,191,36" : "52,211,153"},0.1)`, border: `1px solid rgba(${f.color === "#FB7185" ? "251,113,133" : f.color === "#4ADE80" ? "74,222,128" : f.color === "#60A5FA" ? "96,165,250" : f.color === "#A78BFA" ? "167,139,250" : f.color === "#FBBF24" ? "251,191,36" : "52,211,153"},0.2)`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "24px" }}>
                   {f.icon}

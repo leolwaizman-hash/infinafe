@@ -69,7 +69,7 @@ export default function Problem() {
                 transition={{ duration: 0.7, delay: i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
                 style={{ padding: "36px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none", display: "flex", alignItems: "baseline", gap: "28px" }}
               >
-                <span style={{ fontSize: "clamp(44px, 4.5vw, 64px)", fontWeight: 800, color: s.color, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0, minWidth: "110px", fontVariantNumeric: "tabular-nums" }}>
+                <span style={{ fontSize: "clamp(44px, 4.5vw, 64px)", fontWeight: 800, color: s.color, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0, minWidth: "110px", fontVariantNumeric: "tabular-nums", textShadow: `0 0 40px ${s.color}55` }}>
                   <Counter target={s.target} prefix={s.prefix} suffix={s.suffix} decimals={s.decimals ?? 0} duration={2000} />
                 </span>
                 <span style={{ fontSize: "15px", color: "rgba(255,255,255,0.4)", lineHeight: 1.55 }}>{s.label}</span>

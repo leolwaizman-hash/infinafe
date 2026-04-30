@@ -28,18 +28,21 @@ const feed = [
 function Dashboard() {
   return (
     <div style={{ position: "relative" }}>
+      {/* Glow halo behind the card */}
       <div style={{
-        position: "absolute", inset: "-60px",
-        background: "radial-gradient(ellipse at 50% 60%, rgba(74,222,128,0.07) 0%, transparent 68%)",
+        position: "absolute", inset: "-40px",
+        background: "radial-gradient(ellipse at 50% 50%, rgba(74,222,128,0.08) 0%, transparent 65%)",
         pointerEvents: "none",
       }} />
+      {/* Outer gradient border */}
+      <div style={{ position: "absolute", inset: "-1px", borderRadius: "17px", background: "linear-gradient(135deg, rgba(74,222,128,0.2) 0%, rgba(255,255,255,0.04) 40%, rgba(96,165,250,0.12) 100%)", pointerEvents: "none" }} />
       <div style={{
         position: "relative",
-        background: "linear-gradient(160deg, #1C1C26 0%, #14141C 100%)",
-        border: "1px solid rgba(255,255,255,0.08)",
+        background: "linear-gradient(160deg, #1A1A24 0%, #111118 100%)",
+        border: "1px solid transparent",
         borderRadius: "16px",
         overflow: "hidden",
-        boxShadow: "0 0 0 1px rgba(255,255,255,0.03) inset, 0 40px 80px rgba(0,0,0,0.55)",
+        boxShadow: "0 0 0 1px rgba(255,255,255,0.04) inset, 0 48px 100px rgba(0,0,0,0.65)",
       }}>
         {/* Title bar */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "13px 18px", borderBottom: "1px solid rgba(255,255,255,0.07)", background: "rgba(0,0,0,0.25)" }}>
@@ -100,8 +103,13 @@ export default function Hero() {
   return (
     <section ref={ref} style={{ minHeight: "100vh", backgroundColor: "#09090B", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
 
+      {/* Animated grid background */}
+      <div className="hero-grid" />
+
       {/* Ambient radial glow */}
-      <div style={{ position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -50%)", width: "900px", height: "600px", background: "radial-gradient(ellipse at center, rgba(74,222,128,0.045) 0%, transparent 65%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: "32%", left: "50%", transform: "translate(-50%, -50%)", width: "1000px", height: "700px", background: "radial-gradient(ellipse at center, rgba(74,222,128,0.06) 0%, transparent 65%)", pointerEvents: "none" }} />
+      {/* Second accent glow — off center */}
+      <div style={{ position: "absolute", top: "20%", left: "60%", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(96,165,250,0.03) 0%, transparent 60%)", pointerEvents: "none" }} />
 
       {/* Nav */}
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, height: "62px", padding: "0 6vw", display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(9,9,11,0.88)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", borderBottom: "1px solid rgba(255,255,255,0.07)", zIndex: 100 }}>
@@ -142,7 +150,8 @@ export default function Hero() {
               initial={{ opacity: 0, y: 32, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.65, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-              style={{ display: "inline-block", color: "rgba(255,255,255,0.18)" }}
+              className="bodyguard-text"
+              style={{ display: "inline-block" }}
             >bodyguard.</motion.span>
           </h1>
 

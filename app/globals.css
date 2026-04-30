@@ -102,3 +102,62 @@ h1, h2, h3 {
 .border-glow {
   border: 1px solid rgba(0, 255, 135, 0.2);
 }
+
+/* Animated hero grid */
+@keyframes gridShift {
+  0% { background-position: 0 0; }
+  100% { background-position: 64px 64px; }
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: gridShift 12s linear infinite;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 80%);
+  pointer-events: none;
+}
+
+/* Gradient text — green glow */
+.bodyguard-text {
+  background: linear-gradient(135deg, rgba(74,222,128,0.55) 0%, rgba(255,255,255,0.15) 55%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover glow — applied per color */
+.card-hover-red:hover { box-shadow: 0 24px 60px rgba(251,113,133,0.1), 0 0 0 1px rgba(251,113,133,0.08); }
+.card-hover-green:hover { box-shadow: 0 24px 60px rgba(74,222,128,0.1), 0 0 0 1px rgba(74,222,128,0.08); }
+.card-hover-blue:hover { box-shadow: 0 24px 60px rgba(96,165,250,0.1), 0 0 0 1px rgba(96,165,250,0.08); }
+.card-hover-purple:hover { box-shadow: 0 24px 60px rgba(167,139,250,0.1), 0 0 0 1px rgba(167,139,250,0.08); }
+.card-hover-yellow:hover { box-shadow: 0 24px 60px rgba(251,191,36,0.1), 0 0 0 1px rgba(251,191,36,0.08); }
+.card-hover-emerald:hover { box-shadow: 0 24px 60px rgba(52,211,153,0.1), 0 0 0 1px rgba(52,211,153,0.08); }
+
+/* Shine sweep on hover */
+@keyframes shineSweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+.shine-card {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.shine-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  transform: skewX(-15deg);
+  transition: none;
+}
+.shine-card:hover::after {
+  animation: shineSweep 0.6s ease forwards;
+}
