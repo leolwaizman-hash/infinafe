@@ -120,7 +120,7 @@ export default function Hero() {
       </nav>
 
       {/* Hero body — centered */}
-      <motion.div style={{ y, opacity, flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", paddingTop: "62px", paddingBottom: "60px" }}>
+      <motion.div style={{ y, opacity, flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", paddingTop: "80px", paddingBottom: "20px" }}>
 
         {/* Badge */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} style={{ marginBottom: "32px" }}>
@@ -132,7 +132,7 @@ export default function Hero() {
 
         {/* Headline — centered, full width */}
         <div style={{ textAlign: "center", padding: "0 6vw", maxWidth: "900px", margin: "0 auto" }}>
-          <h1 style={{ fontSize: "clamp(52px, 6.5vw, 96px)", fontWeight: 800, lineHeight: 0.98, letterSpacing: "-0.045em", margin: "0 0 28px" }}>
+          <h1 style={{ fontSize: "clamp(52px, 6.5vw, 96px)", fontWeight: 800, lineHeight: 0.98, letterSpacing: "-0.045em", margin: "0 0 22px" }}>
             {headline.map((word, i) => (
               <motion.span
                 key={i}
@@ -152,17 +152,17 @@ export default function Hero() {
             >bodyguard.</motion.span>
           </h1>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.75 }} style={{ fontSize: "18px", color: "rgba(255,255,255,0.42)", lineHeight: 1.68, margin: "0 auto 40px", maxWidth: "540px" }}>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.75 }} style={{ fontSize: "17px", color: "rgba(255,255,255,0.42)", lineHeight: 1.68, margin: "0 auto 32px", maxWidth: "520px" }}>
             Infina monitors every action your Zapier, Make, n8n, and Lindy automations take — and blocks threats before they reach your data.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.88 }} style={{ display: "flex", gap: "10px", justifyContent: "center", marginBottom: "24px", flexWrap: "wrap" }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.88 }} style={{ display: "flex", gap: "10px", justifyContent: "center", marginBottom: "20px", flexWrap: "wrap" }}>
             <Link href="#pricing" style={{ background: "#F8FAFC", color: "#09090B", padding: "14px 28px", borderRadius: "9px", fontSize: "15px", fontWeight: 700, textDecoration: "none", letterSpacing: "-0.02em" }}>Start protecting →</Link>
             <Link href="#how-it-works" style={{ border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.5)", padding: "14px 28px", borderRadius: "9px", fontSize: "15px", fontWeight: 500, textDecoration: "none", background: "rgba(255,255,255,0.03)", letterSpacing: "-0.01em" }}>See how it works</Link>
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.05 }}>
-            <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.22)", marginBottom: "20px" }}>No credit card required · $49/mo · Cancel anytime</p>
+            <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.22)", marginBottom: "16px" }}>No credit card required · $49/mo · Cancel anytime</p>
             <div style={{ display: "flex", alignItems: "center", gap: "20px", justifyContent: "center" }}>
               <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Works with</span>
               {["Zapier","Make","n8n","Lindy"].map(n => <span key={n} style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.3)" }}>{n}</span>)}
@@ -175,7 +175,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 56, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.0, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          style={{ width: "100%", maxWidth: "860px", padding: "48px 6vw 0", margin: "0 auto" }}
+          style={{ width: "100%", maxWidth: "860px", padding: "28px 6vw 0", margin: "0 auto" }}
         >
           <Dashboard />
         </motion.div>
