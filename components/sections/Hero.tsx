@@ -103,9 +103,6 @@ export default function Hero() {
   return (
     <section ref={ref} style={{ minHeight: "100vh", backgroundColor: "#09090B", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
 
-      {/* Animated grid background */}
-      <div className="hero-grid" />
-
       {/* Ambient radial glow */}
       <div style={{ position: "absolute", top: "32%", left: "50%", transform: "translate(-50%, -50%)", width: "1000px", height: "700px", background: "radial-gradient(ellipse at center, rgba(74,222,128,0.06) 0%, transparent 65%)", pointerEvents: "none" }} />
       {/* Second accent glow — off center */}
