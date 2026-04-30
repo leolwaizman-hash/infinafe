@@ -102,21 +102,21 @@ export default function Hero() {
     <section ref={ref} style={{ minHeight: "100vh", backgroundColor: "#09090B", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
 
       {/* Nav */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, height: "60px", padding: "0 6vw", display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(9,9,11,0.82)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255,255,255,0.06)", zIndex: 100 }}>
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, height: "62px", padding: "0 6vw", display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(9,9,11,0.9)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", borderBottom: "1px solid rgba(255,255,255,0.07)", zIndex: 100 }}>
         <InfinaLogo />
         <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
-          {([["How it works","#how-it-works"],["Pricing","#pricing"],["Who it's for","#who"]] as [string,string][]).map(([l,h]) => (
-            <Link key={l} href={h} style={{ fontSize: "14px", color: "rgba(255,255,255,0.42)", textDecoration: "none" }}>{l}</Link>
+          {([["Features","#features"],["How it works","#how-it-works"],["Pricing","#pricing"]] as [string,string][]).map(([l,h]) => (
+            <Link key={l} href={h} style={{ fontSize: "14px", color: "rgba(255,255,255,0.48)", textDecoration: "none", letterSpacing: "-0.01em" }}>{l}</Link>
           ))}
-          <Link href="#pricing" style={{ background: "#F8FAFC", color: "#09090B", padding: "7px 18px", borderRadius: "7px", fontSize: "13px", fontWeight: 600, textDecoration: "none", letterSpacing: "-0.01em" }}>Get started</Link>
+          <Link href="#pricing" style={{ background: "#F8FAFC", color: "#09090B", padding: "8px 20px", borderRadius: "7px", fontSize: "13px", fontWeight: 700, textDecoration: "none", letterSpacing: "-0.01em" }}>Get started</Link>
         </div>
       </nav>
 
       {/* Hero body with parallax */}
-      <motion.div style={{ y, opacity, flex: 1, display: "flex", alignItems: "center", maxWidth: "1200px", margin: "0 auto", width: "100%", padding: "0 6vw", paddingTop: "60px", gap: "72px" }}>
+      <motion.div style={{ y, opacity, flex: 1, display: "flex", alignItems: "center", maxWidth: "1200px", margin: "0 auto", width: "100%", padding: "0 6vw", paddingTop: "60px", gap: "60px" }}>
 
         {/* LEFT */}
-        <div style={{ flex: "0 0 auto", width: "min(460px, 46vw)" }}>
+        <div style={{ flex: "0 0 auto", width: "min(500px, 48vw)", overflow: "hidden" }}>
 
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} style={{ marginBottom: "28px" }}>
             <span style={{ display: "inline-flex", alignItems: "center", gap: "7px", fontSize: "12px", color: "rgba(255,255,255,0.38)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "6px", padding: "5px 11px", letterSpacing: "0.02em" }}>
@@ -126,7 +126,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Word-by-word headline */}
-          <h1 style={{ fontSize: "clamp(44px, 4.8vw, 68px)", fontWeight: 800, lineHeight: 1.02, letterSpacing: "-0.04em", margin: "0 0 24px" }}>
+          <h1 style={{ fontSize: "clamp(42px, 4.4vw, 64px)", fontWeight: 800, lineHeight: 1.03, letterSpacing: "-0.04em", margin: "0 0 24px" }}>
             <span style={{ display: "block" }}>
               {words1.map((word, i) => (
                 <motion.span key={i} initial={{ opacity: 0, y: 28, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.6, delay: 0.2 + i * 0.09, ease: [0.25, 0.46, 0.45, 0.94] }} style={{ display: "inline-block", marginRight: "0.28em", color: "#F8FAFC" }}>{word}</motion.span>
@@ -137,8 +137,8 @@ export default function Hero() {
                 <motion.span key={i} initial={{ opacity: 0, y: 28, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.6, delay: 0.47 + i * 0.09, ease: [0.25, 0.46, 0.45, 0.94] }} style={{ display: "inline-block", marginRight: "0.28em", color: "#F8FAFC" }}>{word}</motion.span>
               ))}
             </span>
-            <span style={{ display: "block" }}>
-              <motion.span initial={{ opacity: 0, y: 28, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.6, delay: 0.68, ease: [0.25, 0.46, 0.45, 0.94] }} style={{ display: "inline-block", color: "rgba(255,255,255,0.22)" }}>bodyguard.</motion.span>
+            <span style={{ display: "block", whiteSpace: "nowrap" }}>
+              <motion.span initial={{ opacity: 0, y: 28, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.6, delay: 0.68, ease: [0.25, 0.46, 0.45, 0.94] }} style={{ display: "inline-block", color: "rgba(255,255,255,0.2)" }}>bodyguard.</motion.span>
             </span>
           </h1>
 
@@ -146,9 +146,9 @@ export default function Hero() {
             Infina monitors every action your Zapier, Make, n8n, and Lindy automations take — and blocks threats before they reach your data.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.92 }} style={{ display: "flex", gap: "10px", marginBottom: "32px" }}>
-            <Link href="#pricing" style={{ background: "#F8FAFC", color: "#09090B", padding: "12px 22px", borderRadius: "8px", fontSize: "14px", fontWeight: 600, textDecoration: "none", letterSpacing: "-0.01em" }}>Start free trial →</Link>
-            <Link href="#how-it-works" style={{ border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.52)", padding: "12px 22px", borderRadius: "8px", fontSize: "14px", fontWeight: 500, textDecoration: "none", background: "rgba(255,255,255,0.03)" }}>How it works</Link>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.92 }} style={{ display: "flex", gap: "10px", marginBottom: "32px", flexWrap: "wrap" }}>
+            <Link href="#pricing" style={{ background: "#F8FAFC", color: "#09090B", padding: "13px 24px", borderRadius: "8px", fontSize: "14px", fontWeight: 700, textDecoration: "none", letterSpacing: "-0.02em", display: "inline-flex", alignItems: "center", gap: "6px" }}>Start protecting →</Link>
+            <Link href="#how-it-works" style={{ border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.5)", padding: "13px 24px", borderRadius: "8px", fontSize: "14px", fontWeight: 500, textDecoration: "none", background: "rgba(255,255,255,0.03)", letterSpacing: "-0.01em" }}>See how it works</Link>
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }}>
