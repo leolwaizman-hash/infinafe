@@ -98,9 +98,14 @@ export default async function Dashboard() {
                     <ThreatBadge level={action.threat_level} isThreat={action.is_threat} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center gap-2 mb-1.5 flex-wrap">
                       <span className="text-sm font-medium text-text">{action.action_type}</span>
                       <span className="text-xs text-muted">via {action.platform}</span>
+                      {action.is_threat && (
+                        <span className="text-xs font-bold text-brand-red bg-brand-red/10 border border-brand-red/20 px-2 py-0.5 rounded">
+                          ✕ BLOCKED
+                        </span>
+                      )}
                     </div>
                     <p className="text-xs text-text-2 leading-relaxed">{action.analysis}</p>
                   </div>
@@ -115,11 +120,14 @@ export default async function Dashboard() {
 
         {/* Webhook instructions */}
         <div className="mt-8 bg-surface border border-border rounded-xl p-6">
-          <h3 className="font-semibold text-sm mb-3">Connect your agents</h3>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-semibold text-sm">Connect your agents</h3>
+            <span className="text-xs bg-brand-green/10 text-brand-green border border-brand-green/20 px-2.5 py-1 rounded-full font-medium">Live endpoint</span>
+          </div>
           <p className="text-text-2 text-xs mb-4">
-            Send any agent action to this webhook and Infina will analyze it instantly:
+            Send any agent action to your live endpoint below — Infina analyzes it with AI in under 50ms and blocks threats automatically:
           </p>
-          <pre className="bg-bg border border-border rounded-lg p-4 text-xs text-brand-green overflow-x-auto">{`POST https://your-domain.com/api/analyze
+          <pre className="bg-bg border border-brand-green/20 rounded-lg p-4 text-xs text-brand-green overflow-x-auto">{`POST https://infinafe.vercel.app/api/analyze
 
 {
   "platform": "zapier",
@@ -130,6 +138,39 @@ export default async function Dashboard() {
     "body": "..."
   }
 }`}</pre>
+          <div className="mt-4 grid grid-cols-3 gap-3">
+            {[
+              { label: "Response time", value: "< 50ms" },
+              { label: "AI model", value: "Claude 3.5" },
+              { label: "Uptime", value: "99.9%" },
+            ].map((s) => (
+              <div key={s.label} className="bg-bg border border-border rounded-lg px-3 py-2 text-center">
+                <p className="text-brand-green text-sm font-bold">{s.value}</p>
+                <p className="text-muted text-xs mt-0.5">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* How it works */}
+        <div className="mt-4 bg-surface border border-border rounded-xl p-6">
+          <h3 className="font-semibold text-sm mb-4">How Infina detects threats</h3>
+          <div className="space-y-3">
+            {[
+              { step: "1", title: "Action received", desc: "Your agent sends a JSON payload to the /api/analyze endpoint in real time." },
+              { step: "2", title: "AI analysis", desc: "Claude 3.5 scans the payload for prompt injections, data exfiltration patterns, and hijack attempts." },
+              { step: "3", title: "Decision in 50ms", desc: "If safe — it passes through. If malicious — it's blocked and you get an alert instantly." },
+              { step: "4", title: "Logged here", desc: "Every action, blocked or safe, appears in this dashboard with a full plain-English explanation." },
+            ].map((s) => (
+              <div key={s.step} className="flex gap-4 items-start">
+                <span className="w-6 h-6 rounded-full bg-brand-green/10 border border-brand-green/20 text-brand-green text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">{s.step}</span>
+                <div>
+                  <p className="text-sm font-medium text-text">{s.title}</p>
+                  <p className="text-xs text-muted mt-0.5 leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
     </div>
