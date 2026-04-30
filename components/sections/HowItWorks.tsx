@@ -3,76 +3,102 @@ import FadeInView from "@/components/ui/FadeInView";
 const steps = [
   {
     num: "01",
-    title: "Connect",
-    desc: "Link your Zapier, Make, n8n, or Lindy account in under 60 seconds. One API key — nothing to install or maintain.",
+    title: "Connect in 60 seconds",
+    desc: "Link your Zapier, Make, n8n, or Lindy account with a single API key. No agents to install. No DevOps required.",
+    detail: "One-line setup",
   },
   {
     num: "02",
-    title: "Monitor",
-    desc: "Every action your AI agents take is analyzed in real-time before anything can go wrong.",
+    title: "Every action, analyzed",
+    desc: "Infina intercepts and analyzes every automation action in real-time — before it executes. Nothing slips through.",
+    detail: "Real-time monitoring",
   },
   {
     num: "03",
-    title: "Protect",
-    desc: "Receive plain-English alerts the moment something suspicious is detected. Block threats automatically.",
+    title: "Threats blocked. You're notified.",
+    desc: "When something suspicious is detected, Infina blocks it automatically and sends you a plain-English alert within seconds.",
+    detail: "Instant alerts",
   },
 ];
 
 export default function HowItWorks() {
   return (
     <section id="how-it-works" style={{
-      padding: "120px 6vw",
-      backgroundColor: "#0C0C0C",
+      padding: "140px 6vw",
+      backgroundColor: "#0E0E12",
       borderTop: "1px solid rgba(255,255,255,0.05)",
     }}>
-      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+
         <FadeInView>
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", marginBottom: "20px" }}>
+          <p style={{
+            fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em",
+            color: "rgba(255,255,255,0.28)", textTransform: "uppercase", marginBottom: "20px",
+          }}>
             How It Works
           </p>
-          <h2 style={{
-            fontSize: "clamp(36px, 4vw, 60px)", fontWeight: 700,
-            color: "#FFFFFF", lineHeight: 1.05, letterSpacing: "-2px",
-            maxWidth: "560px",
-          }}>
-            Security that actually makes sense.
-          </h2>
-          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.35)", marginTop: "20px", maxWidth: "480px", lineHeight: 1.6 }}>
-            Three steps. No DevOps. No security team required.
-          </p>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "20px", marginBottom: "80px" }}>
+            <h2 style={{
+              fontSize: "clamp(36px, 3.8vw, 58px)", fontWeight: 800,
+              color: "#F8FAFC", lineHeight: 1.05, letterSpacing: "-0.04em",
+              maxWidth: "520px", margin: 0,
+            }}>
+              Security that actually
+              <span style={{ color: "rgba(255,255,255,0.22)" }}>{" "}makes sense.</span>
+            </h2>
+            <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.38)", maxWidth: "320px", lineHeight: 1.65, margin: 0 }}>
+              Three steps. No DevOps.<br />No security team required.
+            </p>
+          </div>
         </FadeInView>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "1px",
-          marginTop: "72px",
-          background: "rgba(255,255,255,0.05)",
-          borderRadius: "12px",
-          overflow: "hidden",
-        }}>
+        {/* Steps */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "rgba(255,255,255,0.05)", borderRadius: "14px", overflow: "hidden" }}>
           {steps.map((step, i) => (
             <FadeInView key={step.num} delay={i * 0.1}>
               <div style={{
-                background: "#111111",
-                padding: "44px 36px",
+                background: "#141418",
+                padding: "44px 36px 44px",
                 height: "100%",
                 boxSizing: "border-box",
+                position: "relative",
               }}>
-                <p style={{
-                  fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.2)",
-                  letterSpacing: "0.1em", marginBottom: "36px",
-                  fontFamily: "monospace",
-                }}>
-                  {step.num}
-                </p>
+                {/* Top accent line */}
+                <div style={{
+                  position: "absolute", top: 0, left: 0, right: 0, height: "2px",
+                  background: i === 0
+                    ? "linear-gradient(90deg, #FB7185 0%, transparent 60%)"
+                    : i === 1
+                    ? "linear-gradient(90deg, #FB923C 0%, transparent 60%)"
+                    : "linear-gradient(90deg, #4ADE80 0%, transparent 60%)",
+                  opacity: 0.5,
+                }} />
+
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "32px" }}>
+                  <span style={{
+                    fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.2)",
+                    letterSpacing: "0.08em", fontFamily: "var(--font-geist-mono)",
+                  }}>
+                    {step.num}
+                  </span>
+                  <span style={{
+                    fontSize: "10px", fontWeight: 600,
+                    color: i === 0 ? "#FB7185" : i === 1 ? "#FB923C" : "#4ADE80",
+                    background: i === 0 ? "rgba(251,113,133,0.1)" : i === 1 ? "rgba(251,146,60,0.1)" : "rgba(74,222,128,0.08)",
+                    padding: "3px 8px", borderRadius: "4px",
+                    letterSpacing: "0.04em",
+                  }}>
+                    {step.detail}
+                  </span>
+                </div>
+
                 <h3 style={{
-                  fontSize: "24px", fontWeight: 700, color: "#FFFFFF",
-                  marginBottom: "14px", letterSpacing: "-0.5px",
+                  fontSize: "21px", fontWeight: 700, color: "#F8FAFC",
+                  marginBottom: "14px", letterSpacing: "-0.03em", lineHeight: 1.2,
                 }}>
                   {step.title}
                 </h3>
-                <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
+                <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, margin: 0 }}>
                   {step.desc}
                 </p>
               </div>
@@ -80,19 +106,15 @@ export default function HowItWorks() {
           ))}
         </div>
 
+        {/* Feature pills */}
         <FadeInView delay={0.3}>
-          <div style={{
-            marginTop: "48px",
-            display: "flex", flexWrap: "wrap", gap: "8px",
-          }}>
-            {["Real-time monitoring","Plain English alerts","Email notifications","Weekly digest","No agents to install","Cancel anytime"].map(f => (
+          <div style={{ marginTop: "40px", display: "flex", flexWrap: "wrap", gap: "8px" }}>
+            {["Real-time monitoring", "Plain English alerts", "Email notifications", "Weekly digest", "No agents to install", "Cancel anytime"].map(f => (
               <span key={f} style={{
-                fontSize: "13px", color: "rgba(255,255,255,0.4)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                borderRadius: "6px",
-                padding: "6px 14px",
+                fontSize: "12px", color: "rgba(255,255,255,0.38)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                borderRadius: "6px", padding: "6px 13px",
                 background: "rgba(255,255,255,0.02)",
-                letterSpacing: "-0.01em",
               }}>
                 {f}
               </span>

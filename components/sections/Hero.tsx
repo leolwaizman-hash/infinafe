@@ -3,70 +3,205 @@ import Link from "next/link";
 import { motion } from "motion/react";
 
 const InfinaLogo = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130" fill="none" width="72" height="23" aria-label="Infina">
-    {[
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130" fill="none" width="70" height="23" aria-label="Infina">
+    {([
       [8,8,8,122],[24,8,24,122],
       [48,8,48,122],[48,8,84,122],[84,8,84,122],
       [108,8,108,122],[108,8,155,8],[108,65,150,65],
       [172,8,172,122],[188,8,188,122],
       [212,8,212,122],[212,8,248,122],[248,8,248,122],
       [272,122,304,8],[336,122,304,8],[281,78,327,78],
-    ].map(([x1,y1,x2,y2],i) => (
+    ] as number[][]).map(([x1,y1,x2,y2],i) => (
       <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-        stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="square"/>
+        stroke="rgba(255,255,255,0.85)" strokeWidth="3.5" strokeLinecap="square"/>
     ))}
   </svg>
 );
 
-const alerts = [
-  { dot: "#EF4444", label: "THREAT", msg: "Prompt injection detected in Zapier workflow #4821", sub: "Customer Support Bot · 2s ago" },
-  { dot: "#F97316", label: "BLOCKED", msg: "Data exfiltration attempt stopped before execution", sub: "Sales Automation · 14m ago" },
-  { dot: "#22C55E", label: "CLEAR", msg: "All 12 active workflows running normally", sub: "System · 1h ago" },
+const feed = [
+  {
+    badge: "BLOCKED", bc: "#FB7185", bb: "rgba(251,113,133,0.12)",
+    title: "Prompt injection in customer workflow",
+    source: "Zapier · Customer Support Bot",
+    time: "2s ago",
+    highlight: true,
+  },
+  {
+    badge: "STOPPED", bc: "#FB923C", bb: "rgba(251,146,60,0.1)",
+    title: "Unauthorized data export attempt",
+    source: "Make · Sales Automation",
+    time: "14m ago",
+    highlight: false,
+  },
+  {
+    badge: "CLEAR", bc: "#4ADE80", bb: "rgba(74,222,128,0.08)",
+    title: "All 12 workflows running normally",
+    source: "System · health check",
+    time: "1h ago",
+    highlight: false,
+  },
 ];
+
+const stats = [
+  { label: "Blocked", value: "2,847", sub: "+14 today", color: "#FB7185" },
+  { label: "Workflows", value: "14", sub: "active", color: "#F8FAFC" },
+  { label: "Risk", value: "Low", sub: "last 24h", color: "#4ADE80" },
+];
+
+function Dashboard() {
+  return (
+    <div style={{ position: "relative" }}>
+      {/* Ambient glow behind the card */}
+      <div style={{
+        position: "absolute", inset: "-60px",
+        background: "radial-gradient(ellipse at 50% 60%, rgba(74,222,128,0.07) 0%, transparent 68%)",
+        pointerEvents: "none",
+      }} />
+
+      <div style={{
+        position: "relative",
+        background: "linear-gradient(160deg, #1C1C26 0%, #14141C 100%)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        borderRadius: "16px",
+        overflow: "hidden",
+        boxShadow: "0 0 0 1px rgba(255,255,255,0.03) inset, 0 40px 80px rgba(0,0,0,0.55)",
+      }}>
+
+        {/* Title bar */}
+        <div style={{
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          padding: "13px 18px",
+          borderBottom: "1px solid rgba(255,255,255,0.07)",
+          background: "rgba(0,0,0,0.25)",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <div style={{ display: "flex", gap: "6px" }}>
+              {[0,1,2].map(i => (
+                <div key={i} style={{ width: "10px", height: "10px", borderRadius: "50%", background: "rgba(255,255,255,0.08)" }} />
+              ))}
+            </div>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.28)", fontFamily: "var(--font-geist-mono)", letterSpacing: "0.02em" }}>
+              infina.app / dashboard
+            </span>
+          </div>
+          <div style={{
+            display: "flex", alignItems: "center", gap: "6px",
+            background: "rgba(74,222,128,0.07)",
+            border: "1px solid rgba(74,222,128,0.15)",
+            borderRadius: "100px", padding: "4px 11px",
+          }}>
+            <div className="pulse-dot" style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#4ADE80" }} />
+            <span style={{ fontSize: "11px", color: "#4ADE80", fontWeight: 600, letterSpacing: "0.01em" }}>Protected</span>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+          {stats.map((s, i) => (
+            <div key={i} style={{
+              padding: "16px 18px",
+              borderRight: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none",
+            }}>
+              <p style={{ fontSize: "10px", color: "rgba(255,255,255,0.28)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: "8px" }}>
+                {s.label}
+              </p>
+              <p style={{ fontSize: "22px", fontWeight: 700, color: s.color, letterSpacing: "-0.04em", lineHeight: 1 }}>
+                {s.value}
+              </p>
+              <p style={{ fontSize: "10px", color: "rgba(255,255,255,0.22)", marginTop: "5px" }}>{s.sub}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Feed header */}
+        <div style={{
+          padding: "10px 18px",
+          borderBottom: "1px solid rgba(255,255,255,0.05)",
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+        }}>
+          <span style={{ fontSize: "10px", fontWeight: 600, color: "rgba(255,255,255,0.25)", letterSpacing: "0.07em", textTransform: "uppercase" }}>
+            Live Feed
+          </span>
+          <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.18)", fontFamily: "var(--font-geist-mono)" }}>
+            ● live
+          </span>
+        </div>
+
+        {/* Alerts */}
+        {feed.map((a, i) => (
+          <div key={i} style={{
+            display: "flex", alignItems: "center", gap: "12px",
+            padding: "13px 18px",
+            borderBottom: i < feed.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
+            background: a.highlight ? "rgba(251,113,133,0.025)" : "transparent",
+          }}>
+            <span style={{
+              fontSize: "9px", fontWeight: 700, letterSpacing: "0.06em",
+              color: a.bc, background: a.bb,
+              padding: "3px 7px", borderRadius: "3px",
+              fontFamily: "var(--font-geist-mono)",
+              flexShrink: 0,
+            }}>
+              {a.badge}
+            </span>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p style={{
+                fontSize: "12px", fontWeight: 500,
+                color: "rgba(255,255,255,0.82)",
+                whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+                margin: 0,
+              }}>
+                {a.title}
+              </p>
+              <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", margin: "2px 0 0" }}>
+                {a.source}
+              </p>
+            </div>
+            <span style={{
+              fontSize: "10px", color: "rgba(255,255,255,0.2)",
+              flexShrink: 0, fontFamily: "var(--font-geist-mono)",
+            }}>
+              {a.time}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
     <section style={{
       minHeight: "100vh",
-      backgroundColor: "#080808",
+      backgroundColor: "#09090B",
       display: "flex",
       flexDirection: "column",
       position: "relative",
       overflow: "hidden",
     }}>
 
-      {/* Top glow */}
-      <div style={{
-        position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
-        width: "1000px", height: "600px",
-        background: "radial-gradient(ellipse at top, rgba(255,255,255,0.04) 0%, transparent 65%)",
-        pointerEvents: "none", zIndex: 0,
-      }} />
-
       {/* Nav */}
       <nav style={{
-        position: "fixed", top: 0, left: 0, right: 0,
+        position: "fixed", top: 0, left: 0, right: 0, height: "60px",
         padding: "0 6vw",
-        height: "64px",
         display: "flex", justifyContent: "space-between", alignItems: "center",
-        backgroundColor: "rgba(8,8,8,0.85)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
+        background: "rgba(9,9,11,0.82)",
+        backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
         borderBottom: "1px solid rgba(255,255,255,0.06)",
         zIndex: 100,
       }}>
         <InfinaLogo />
-        <div style={{ display: "flex", alignItems: "center", gap: "36px" }}>
-          {[["How it works","#how-it-works"],["Pricing","#pricing"],["Who it's for","#who"]].map(([label,href]) => (
-            <Link key={label} href={href} style={{
-              fontSize: "14px", color: "rgba(255,255,255,0.45)",
-              textDecoration: "none",
-            }}>{label}</Link>
+        <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
+          {([ ["How it works","#how-it-works"], ["Pricing","#pricing"], ["Who it's for","#who"] ] as [string,string][]).map(([label,href]) => (
+            <Link key={label} href={href} style={{ fontSize: "14px", color: "rgba(255,255,255,0.42)", textDecoration: "none" }}>
+              {label}
+            </Link>
           ))}
           <Link href="#pricing" style={{
-            background: "#fff", color: "#000",
-            padding: "8px 20px", borderRadius: "7px",
-            fontSize: "14px", fontWeight: 600, textDecoration: "none",
+            background: "#F8FAFC", color: "#09090B",
+            padding: "7px 18px", borderRadius: "7px",
+            fontSize: "13px", fontWeight: 600, textDecoration: "none",
             letterSpacing: "-0.01em",
           }}>
             Get started
@@ -74,170 +209,134 @@ export default function Hero() {
         </div>
       </nav>
 
-      {/* Hero content */}
+      {/* Hero body */}
       <div style={{
-        flex: 1, display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "center",
-        textAlign: "center",
-        padding: "120px 6vw 80px",
-        position: "relative", zIndex: 1,
+        flex: 1,
+        display: "flex",
+        alignItems: "center",
+        maxWidth: "1200px",
+        margin: "0 auto",
+        width: "100%",
+        padding: "0 6vw",
+        paddingTop: "60px",
+        gap: "72px",
       }}>
 
-        {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            background: "rgba(255,255,255,0.05)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: "100px", padding: "5px 14px",
-            marginBottom: "36px",
-          }}
-        >
-          <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#22C55E", flexShrink: 0 }} />
-          <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)", fontWeight: 500, letterSpacing: "0.03em" }}>
-            Now available · AI Agent Security
-          </span>
-        </motion.div>
+        {/* LEFT — Copy */}
+        <div style={{ flex: "0 0 auto", width: "min(460px, 45vw)" }}>
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          style={{
-            fontSize: "clamp(44px, 6.5vw, 88px)",
-            fontWeight: 700,
-            color: "#FFFFFF",
-            lineHeight: 1.0,
-            letterSpacing: "-3px",
-            maxWidth: "820px",
-            marginBottom: "0",
-          }}
-        >
-          Your AI agents are
-          <br />
-          <span style={{ color: "rgba(255,255,255,0.28)" }}>running unsupervised.</span>
-        </motion.h1>
-
-        {/* Subhead */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          style={{
-            fontSize: "clamp(16px, 1.4vw, 19px)",
-            color: "rgba(255,255,255,0.4)",
-            maxWidth: "480px",
-            lineHeight: 1.65,
-            marginTop: "28px",
-            marginBottom: "44px",
-          }}
-        >
-          Real-time threat detection for Zapier, Make, n8n, and Lindy.
-          Plain-English alerts the moment something goes wrong.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}
-        >
-          <Link href="#pricing" style={{
-            background: "#FFFFFF", color: "#000",
-            padding: "13px 28px", borderRadius: "8px",
-            fontSize: "15px", fontWeight: 600, textDecoration: "none",
-            letterSpacing: "-0.01em",
-          }}>
-            Start free trial →
-          </Link>
-          <Link href="#how-it-works" style={{
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            color: "rgba(255,255,255,0.65)",
-            padding: "13px 28px", borderRadius: "8px",
-            fontSize: "15px", fontWeight: 500, textDecoration: "none",
-          }}>
-            See how it works
-          </Link>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          style={{ marginTop: "18px", fontSize: "13px", color: "rgba(255,255,255,0.22)" }}
-        >
-          No credit card required · Cancel anytime · Setup in 60 seconds
-        </motion.p>
-
-        {/* Product mockup */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            marginTop: "72px",
-            width: "100%",
-            maxWidth: "720px",
-            background: "#111111",
-            border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: "14px",
-            overflow: "hidden",
-            boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
-            textAlign: "left",
-          }}
-        >
-          {/* Window chrome */}
-          <div style={{
-            padding: "13px 18px",
-            borderBottom: "1px solid rgba(255,255,255,0.06)",
-            display: "flex", alignItems: "center", gap: "8px",
-            background: "#0F0F0F",
-          }}>
-            {["rgba(255,95,86,0.7)","rgba(255,189,46,0.7)","rgba(39,201,63,0.7)"].map((c,i) => (
-              <span key={i} style={{ width: "10px", height: "10px", borderRadius: "50%", background: c }} />
-            ))}
-            <span style={{ marginLeft: "10px", fontSize: "12px", color: "rgba(255,255,255,0.25)", fontFamily: "monospace" }}>
-              infina — threat monitor
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            style={{ marginBottom: "28px" }}
+          >
+            <span style={{
+              display: "inline-flex", alignItems: "center", gap: "7px",
+              fontSize: "12px", color: "rgba(255,255,255,0.38)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "6px", padding: "5px 11px",
+              letterSpacing: "0.02em",
+            }}>
+              <span className="pulse-dot" style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#4ADE80", flexShrink: 0 }} />
+              Now available
             </span>
-          </div>
+          </motion.div>
 
-          {/* Alert rows */}
-          <div style={{ padding: "8px 0" }}>
-            {alerts.map((a, i) => (
-              <div key={i} style={{
-                display: "flex", alignItems: "center", gap: "16px",
-                padding: "14px 20px",
-                borderBottom: i < alerts.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
-              }}>
-                <div style={{
-                  width: "7px", height: "7px", borderRadius: "50%",
-                  background: a.dot, flexShrink: 0,
-                  boxShadow: `0 0 8px ${a.dot}99`,
-                }} />
-                <div style={{
-                  fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em",
-                  color: a.dot, flexShrink: 0, width: "52px",
-                  fontFamily: "monospace",
-                }}>
-                  {a.label}
-                </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.8)", fontWeight: 500, margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                    {a.msg}
-                  </p>
-                  <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", margin: "2px 0 0", fontFamily: "monospace" }}>
-                    {a.sub}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+            style={{
+              fontSize: "clamp(44px, 4.8vw, 68px)",
+              fontWeight: 800,
+              lineHeight: 1.02,
+              letterSpacing: "-0.04em",
+              color: "#F8FAFC",
+              margin: "0 0 24px",
+            }}
+          >
+            Your AI agents
+            <br />
+            need a
+            <br />
+            <span style={{ color: "rgba(255,255,255,0.22)" }}>bodyguard.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.2 }}
+            style={{
+              fontSize: "16px",
+              color: "rgba(255,255,255,0.44)",
+              lineHeight: 1.72,
+              margin: "0 0 36px",
+            }}
+          >
+            Infina monitors every action your Zapier, Make, n8n,
+            and Lindy automations take — and blocks threats before
+            they reach your data.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.3 }}
+            style={{ display: "flex", gap: "10px", marginBottom: "32px" }}
+          >
+            <Link href="#pricing" style={{
+              background: "#F8FAFC", color: "#09090B",
+              padding: "12px 22px", borderRadius: "8px",
+              fontSize: "14px", fontWeight: 600, textDecoration: "none",
+              letterSpacing: "-0.01em",
+            }}>
+              Start free trial →
+            </Link>
+            <Link href="#how-it-works" style={{
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "rgba(255,255,255,0.52)",
+              padding: "12px 22px", borderRadius: "8px",
+              fontSize: "14px", fontWeight: 500, textDecoration: "none",
+              background: "rgba(255,255,255,0.03)",
+            }}>
+              How it works
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.55 }}
+          >
+            <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.2)", marginBottom: "24px" }}>
+              No credit card required · $49/mo · Cancel anytime
+            </p>
+            <div style={{
+              display: "flex", alignItems: "center", gap: "18px",
+              paddingTop: "20px",
+              borderTop: "1px solid rgba(255,255,255,0.06)",
+            }}>
+              <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.07em", textTransform: "uppercase", flexShrink: 0 }}>
+                Works with
+              </span>
+              {["Zapier", "Make", "n8n", "Lindy"].map(name => (
+                <span key={name} style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.28)" }}>
+                  {name}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* RIGHT — Dashboard */}
+        <motion.div
+          initial={{ opacity: 0, y: 36, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.75, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          style={{ flex: 1, minWidth: 0 }}
+        >
+          <Dashboard />
         </motion.div>
 
       </div>

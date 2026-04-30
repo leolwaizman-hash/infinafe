@@ -1,72 +1,91 @@
 import FadeInView from "@/components/ui/FadeInView";
 
 const stats = [
-  { number: "340%", label: "Increase in AI prompt injection attacks in 2024", color: "#EF4444" },
-  { number: "$4.8M", label: "Average cost of a data breach for small businesses", color: "#F97316" },
-  { number: "0", label: "Security tools designed for small business AI — until now", color: "#22C55E" },
+  { number: "340%", label: "Rise in AI prompt injection attacks in 2024", color: "#FB7185" },
+  { number: "$4.8M", label: "Average cost of a data breach for small businesses", color: "#FB923C" },
+  { number: "0", label: "Security tools built for small business AI — until now", color: "#4ADE80" },
 ];
 
 export default function Problem() {
   return (
     <section id="problem" style={{
-      padding: "120px 6vw",
-      backgroundColor: "#080808",
+      padding: "140px 6vw",
+      backgroundColor: "#09090B",
       borderTop: "1px solid rgba(255,255,255,0.05)",
       position: "relative",
       overflow: "hidden",
     }}>
 
-      <div style={{ maxWidth: "1100px", margin: "0 auto", position: "relative" }}>
-        <FadeInView>
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", marginBottom: "20px" }}>
-            The Problem
-          </p>
-          <h2 style={{
-            fontSize: "clamp(36px, 4vw, 60px)", fontWeight: 700,
-            color: "#FFFFFF", lineHeight: 1.05, letterSpacing: "-2px",
-            maxWidth: "680px",
-          }}>
-            Your AI agents work 24/7.{" "}
-            <span style={{ color: "rgba(255,255,255,0.3)" }}>Nobody&apos;s watching them.</span>
-          </h2>
-          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.35)", marginTop: "24px", maxWidth: "520px", lineHeight: 1.6 }}>
-            Every automation you run is a potential attack surface. Hackers know this. Your security tools don&apos;t.
-          </p>
-        </FadeInView>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
+        {/* Editorial layout: statement + stats side by side */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "1px",
-          marginTop: "80px",
-          background: "rgba(255,255,255,0.05)",
-          borderRadius: "12px",
-          overflow: "hidden",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "80px",
+          alignItems: "start",
         }}>
-          {stats.map((stat, i) => (
-            <FadeInView key={stat.number} delay={i * 0.1}>
-              <div style={{
-                backgroundColor: "#111111",
-                padding: "48px 40px",
-                position: "relative",
-              }}>
+
+          {/* Left: big statement */}
+          <FadeInView>
+            <p style={{
+              fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em",
+              color: "rgba(255,255,255,0.28)", textTransform: "uppercase", marginBottom: "24px",
+            }}>
+              The Problem
+            </p>
+            <h2 style={{
+              fontSize: "clamp(40px, 4vw, 64px)", fontWeight: 800,
+              color: "#F8FAFC", lineHeight: 1.03, letterSpacing: "-0.04em",
+            }}>
+              Your automation
+              stack is an
+              <span style={{ color: "rgba(255,255,255,0.22)" }}>{" "}open door.</span>
+            </h2>
+            <p style={{
+              fontSize: "16px", color: "rgba(255,255,255,0.42)",
+              marginTop: "28px", lineHeight: 1.7, maxWidth: "420px",
+            }}>
+              Every time your AI agent sends an email, reads a spreadsheet,
+              or talks to a customer — it&apos;s a potential attack surface.
+              Hackers know this. Your security tools don&apos;t.
+            </p>
+          </FadeInView>
+
+          {/* Right: three stats, stacked editorially */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+            {stats.map((s, i) => (
+              <FadeInView key={s.number} delay={i * 0.1}>
                 <div style={{
-                  position: "absolute", top: 0, left: 0, right: 0, height: "1px",
-                  background: `linear-gradient(90deg, transparent 0%, ${stat.color}60 50%, transparent 100%)`,
-                }} />
-                <p style={{
-                  fontSize: "clamp(48px, 5vw, 72px)", fontWeight: 800,
-                  color: stat.color, letterSpacing: "-3px", lineHeight: 1,
-                  fontVariantNumeric: "tabular-nums",
+                  padding: "32px 0",
+                  borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none",
+                  display: "flex",
+                  alignItems: "baseline",
+                  gap: "28px",
                 }}>
-                  {stat.number}
-                </p>
-                <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.4)", marginTop: "14px", lineHeight: 1.6, maxWidth: "220px" }}>
-                  {stat.label}
-                </p>
-              </div>
-            </FadeInView>
-          ))}
+                  <span style={{
+                    fontSize: "clamp(44px, 4.5vw, 64px)",
+                    fontWeight: 800,
+                    color: s.color,
+                    letterSpacing: "-0.04em",
+                    lineHeight: 1,
+                    flexShrink: 0,
+                    fontVariantNumeric: "tabular-nums",
+                    minWidth: "100px",
+                  }}>
+                    {s.number}
+                  </span>
+                  <span style={{
+                    fontSize: "15px",
+                    color: "rgba(255,255,255,0.4)",
+                    lineHeight: 1.55,
+                  }}>
+                    {s.label}
+                  </span>
+                </div>
+              </FadeInView>
+            ))}
+          </div>
         </div>
       </div>
     </section>

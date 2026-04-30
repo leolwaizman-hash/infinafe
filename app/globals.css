@@ -22,11 +22,27 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #000000;
-  color: #F5F5F5;
+  background-color: #09090B;
+  color: #F8FAFC;
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px #4ADE80; }
+  50% { opacity: 0.6; box-shadow: 0 0 12px #4ADE80; }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in { animation: slide-in 0.4s ease forwards; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
