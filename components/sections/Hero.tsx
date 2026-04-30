@@ -89,20 +89,22 @@ function Dashboard() {
   );
 }
 
-const words1 = ["Your", "AI", "agents"];
-const words2 = ["need", "a"];
+const headline = ["Your", "AI", "agents", "need", "a"];
 
 export default function Hero() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
 
   return (
     <section ref={ref} style={{ minHeight: "100vh", backgroundColor: "#09090B", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
 
+      {/* Ambient radial glow */}
+      <div style={{ position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -50%)", width: "900px", height: "600px", background: "radial-gradient(ellipse at center, rgba(74,222,128,0.045) 0%, transparent 65%)", pointerEvents: "none" }} />
+
       {/* Nav */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, height: "62px", padding: "0 6vw", display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(9,9,11,0.9)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", borderBottom: "1px solid rgba(255,255,255,0.07)", zIndex: 100 }}>
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, height: "62px", padding: "0 6vw", display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(9,9,11,0.88)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", borderBottom: "1px solid rgba(255,255,255,0.07)", zIndex: 100 }}>
         <InfinaLogo />
         <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
           {([["Features","#features"],["How it works","#how-it-works"],["Pricing","#pricing"]] as [string,string][]).map(([l,h]) => (
@@ -112,66 +114,73 @@ export default function Hero() {
         </div>
       </nav>
 
-      {/* Hero body with parallax */}
-      <motion.div style={{ y, opacity, flex: 1, display: "flex", alignItems: "center", maxWidth: "1200px", margin: "0 auto", width: "100%", padding: "0 6vw", paddingTop: "60px", gap: "60px" }}>
+      {/* Hero body — centered */}
+      <motion.div style={{ y, opacity, flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", paddingTop: "62px", paddingBottom: "60px" }}>
 
-        {/* LEFT */}
-        <div style={{ flex: "0 0 auto", width: "min(500px, 48vw)", overflow: "hidden" }}>
+        {/* Badge */}
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} style={{ marginBottom: "32px" }}>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "7px", fontSize: "12px", color: "rgba(255,255,255,0.38)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "6px", padding: "5px 14px", letterSpacing: "0.03em" }}>
+            <span className="pulse-dot" style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#4ADE80", flexShrink: 0 }} />
+            Now available — early access open
+          </span>
+        </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} style={{ marginBottom: "28px" }}>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "7px", fontSize: "12px", color: "rgba(255,255,255,0.38)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "6px", padding: "5px 11px", letterSpacing: "0.02em" }}>
-              <span className="pulse-dot" style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#4ADE80", flexShrink: 0 }} />
-              Now available
-            </span>
-          </motion.div>
-
-          {/* Word-by-word headline */}
-          <h1 style={{ fontSize: "clamp(42px, 4.4vw, 64px)", fontWeight: 800, lineHeight: 1.03, letterSpacing: "-0.04em", margin: "0 0 24px" }}>
-            <span style={{ display: "block" }}>
-              {words1.map((word, i) => (
-                <motion.span key={i} initial={{ opacity: 0, y: 28, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.6, delay: 0.2 + i * 0.09, ease: [0.25, 0.46, 0.45, 0.94] }} style={{ display: "inline-block", marginRight: "0.28em", color: "#F8FAFC" }}>{word}</motion.span>
-              ))}
-            </span>
-            <span style={{ display: "block" }}>
-              {words2.map((word, i) => (
-                <motion.span key={i} initial={{ opacity: 0, y: 28, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.6, delay: 0.47 + i * 0.09, ease: [0.25, 0.46, 0.45, 0.94] }} style={{ display: "inline-block", marginRight: "0.28em", color: "#F8FAFC" }}>{word}</motion.span>
-              ))}
-            </span>
-            <span style={{ display: "block", whiteSpace: "nowrap" }}>
-              <motion.span initial={{ opacity: 0, y: 28, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.6, delay: 0.68, ease: [0.25, 0.46, 0.45, 0.94] }} style={{ display: "inline-block", color: "rgba(255,255,255,0.2)" }}>bodyguard.</motion.span>
-            </span>
+        {/* Headline — centered, full width */}
+        <div style={{ textAlign: "center", padding: "0 6vw", maxWidth: "900px", margin: "0 auto" }}>
+          <h1 style={{ fontSize: "clamp(52px, 6.5vw, 96px)", fontWeight: 800, lineHeight: 0.98, letterSpacing: "-0.045em", margin: "0 0 28px" }}>
+            {headline.map((word, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 32, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.65, delay: 0.15 + i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+                style={{ display: "inline-block", marginRight: "0.22em", color: "#F8FAFC" }}
+              >{word}</motion.span>
+            ))}
+            <br />
+            <motion.span
+              initial={{ opacity: 0, y: 32, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.65, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+              style={{ display: "inline-block", color: "rgba(255,255,255,0.18)" }}
+            >bodyguard.</motion.span>
           </h1>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.8 }} style={{ fontSize: "16px", color: "rgba(255,255,255,0.44)", lineHeight: 1.72, margin: "0 0 36px" }}>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.75 }} style={{ fontSize: "18px", color: "rgba(255,255,255,0.42)", lineHeight: 1.68, margin: "0 auto 40px", maxWidth: "540px" }}>
             Infina monitors every action your Zapier, Make, n8n, and Lindy automations take — and blocks threats before they reach your data.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.92 }} style={{ display: "flex", gap: "10px", marginBottom: "32px", flexWrap: "wrap" }}>
-            <Link href="#pricing" style={{ background: "#F8FAFC", color: "#09090B", padding: "13px 24px", borderRadius: "8px", fontSize: "14px", fontWeight: 700, textDecoration: "none", letterSpacing: "-0.02em", display: "inline-flex", alignItems: "center", gap: "6px" }}>Start protecting →</Link>
-            <Link href="#how-it-works" style={{ border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.5)", padding: "13px 24px", borderRadius: "8px", fontSize: "14px", fontWeight: 500, textDecoration: "none", background: "rgba(255,255,255,0.03)", letterSpacing: "-0.01em" }}>See how it works</Link>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.88 }} style={{ display: "flex", gap: "10px", justifyContent: "center", marginBottom: "24px", flexWrap: "wrap" }}>
+            <Link href="#pricing" style={{ background: "#F8FAFC", color: "#09090B", padding: "14px 28px", borderRadius: "9px", fontSize: "15px", fontWeight: 700, textDecoration: "none", letterSpacing: "-0.02em" }}>Start protecting →</Link>
+            <Link href="#how-it-works" style={{ border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.5)", padding: "14px 28px", borderRadius: "9px", fontSize: "15px", fontWeight: 500, textDecoration: "none", background: "rgba(255,255,255,0.03)", letterSpacing: "-0.01em" }}>See how it works</Link>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }}>
-            <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.2)", marginBottom: "20px" }}>No credit card required · $49/mo · Cancel anytime</p>
-            <div style={{ display: "flex", alignItems: "center", gap: "18px", paddingTop: "20px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-              <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.07em", textTransform: "uppercase", flexShrink: 0 }}>Works with</span>
-              {["Zapier","Make","n8n","Lindy"].map(n => <span key={n} style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.28)" }}>{n}</span>)}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.05 }}>
+            <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.22)", marginBottom: "20px" }}>No credit card required · $49/mo · Cancel anytime</p>
+            <div style={{ display: "flex", alignItems: "center", gap: "20px", justifyContent: "center" }}>
+              <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Works with</span>
+              {["Zapier","Make","n8n","Lindy"].map(n => <span key={n} style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.3)" }}>{n}</span>)}
             </div>
           </motion.div>
         </div>
 
-        {/* RIGHT — Dashboard */}
-        <motion.div initial={{ opacity: 0, y: 48, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.9, delay: 0.5, ease: [0.16, 1, 0.3, 1] }} style={{ flex: 1, minWidth: 0 }}>
+        {/* Dashboard — full width below text */}
+        <motion.div
+          initial={{ opacity: 0, y: 56, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.0, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          style={{ width: "100%", maxWidth: "860px", padding: "48px 6vw 0", margin: "0 auto" }}
+        >
           <Dashboard />
         </motion.div>
 
       </motion.div>
 
       {/* Scroll indicator */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }} style={{ position: "absolute", bottom: "32px", left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} style={{ position: "absolute", bottom: "28px", left: "50%", transform: "translateX(-50%)" }}>
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M5 7.5L10 12.5L15 7.5" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </motion.div>
       </motion.div>
