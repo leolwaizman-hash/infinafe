@@ -11,7 +11,7 @@ const stats = [
 
 export default function Problem() {
   return (
-    <section id="problem" style={{ padding: "160px 6vw", backgroundColor: "#09090B", borderTop: "1px solid rgba(255,255,255,0.05)", position: "relative", overflow: "hidden" }}>
+    <section id="problem" style={{ padding: "140px 6vw", backgroundColor: "#09090B", borderTop: "1px solid rgba(255,255,255,0.05)", position: "relative", overflow: "hidden" }}>
 
       {/* Ambient */}
       <div style={{ position: "absolute", top: "40%", right: "-15%", width: "700px", height: "700px", background: "radial-gradient(circle, rgba(251,113,133,0.04) 0%, transparent 65%)", pointerEvents: "none" }} />

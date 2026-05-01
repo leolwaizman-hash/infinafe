@@ -135,10 +135,11 @@ h1, h2, h3 {
 
 /* Gradient text — green glow */
 .bodyguard-text {
-  background: linear-gradient(135deg, rgba(74,222,128,0.55) 0%, rgba(255,255,255,0.15) 55%);
+  background: linear-gradient(135deg, #4ADE80 0%, #a8f0c8 45%, rgba(255,255,255,0.55) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  filter: drop-shadow(0 0 32px rgba(74,222,128,0.18));
 }
 
 /* Card hover glow — applied per color */

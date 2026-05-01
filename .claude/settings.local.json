@@ -31,7 +31,8 @@
       "Bash(npx tsx *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://infina.vercel.app/)",
       "Bash(curl -s -I https://infina.vercel.app/)",
-      "mcp__Claude_in_Chrome__tabs_context_mcp"
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__browser_batch"
     ]
   }
 }

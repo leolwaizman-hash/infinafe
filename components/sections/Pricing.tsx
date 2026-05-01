@@ -46,7 +46,7 @@ export default function Pricing() {
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
         {/* Side by side layout */}
-        <div style={{
+        <div className="grid-2col" style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: "80px",
